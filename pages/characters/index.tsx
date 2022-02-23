@@ -1,5 +1,6 @@
 import { gql, useQuery } from '@apollo/client'
 import Loader from 'components/ui/Loader'
+import CharactersList from 'components/characters/CharactersList'
 
 const characterQuery = gql`
   query characters($page: Int, $filter: FilterCharacter) {
@@ -30,13 +31,12 @@ const CharactersPage = (props) => {
     return <Loader />
   }
   const {
-    characters: { results: characters, pageInfo },
+    characters: { results: characters, info },
   } = data
   debugger
   return (
     <div>
-      {JSON.stringify(characters)}
-      {JSON.stringify(pageInfo)}
+      <CharactersList characters={characters} pageInfo={info} />
     </div>
   )
 }
