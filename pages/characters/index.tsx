@@ -1,42 +1,18 @@
-import { gql, useQuery } from '@apollo/client'
 import Loader from 'components/ui/Loader'
 import CharactersList from 'components/characters/CharactersList'
-
-const characterQuery = gql`
-  query characters($page: Int, $filter: FilterCharacter) {
-    characters(page: $page, filter: $filter) {
-      info {
-        pages
-        count
-        next
-        prev
-      }
-      results {
-        id
-        name
-        status
-        species
-        type
-        gender
-        image
-        created
-      }
-    }
-  }
-`
+import { useCharacters } from 'graphql/hooks'
 
 const CharactersPage = (props) => {
-  const { loading, data, refetch } = useQuery(characterQuery, {})
+  const { loading, data } = useCharacters()
   if (loading) {
     return <Loader />
   }
   const {
-    characters: { results: characters, info },
+    characters: { info: pageInfo, results: characters },
   } = data
-  debugger
   return (
     <div>
-      <CharactersList characters={characters} pageInfo={info} />
+      <CharactersList characters={characters} pageInfo={pageInfo} />
     </div>
   )
 }

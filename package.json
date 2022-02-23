@@ -7,14 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "generate": "graphql-codegen"
+    "download-schema": "apollo schema:download --endpoint=https://rickandmortyapi.com/graphql graphql/schema.json",
+    "generate": "npm run download-schema && apollo codegen:generate --localSchemaFile=graphql/schema.json --target=typescript --tagName=gql"
   },
   "dependencies": {
     "@apollo/client": "^3.5.9",
-    "@graphql-codegen/cli": "^2.6.2",
-    "@graphql-codegen/typescript": "^2.4.5",
-    "@graphql-codegen/typescript-operations": "^2.3.2",
-    "@graphql-codegen/typescript-react-query": "^3.5.5",
     "@heroicons/react": "^1.0.5",
     "graphql": "^15.8.0",
     "next": "12.1.0",

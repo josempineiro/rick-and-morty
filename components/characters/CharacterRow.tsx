@@ -1,8 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useTable } from './TableContext'
 
-const CharacterRow = ({ row }) => {
+interface CharacterRowProps {
+  row: object
+}
+
+const CharacterRow = ({ row }: CharacterRowProps) => {
   return (
     <tr>
       <td className="px-6 py-4 whitespace-nowrap">
