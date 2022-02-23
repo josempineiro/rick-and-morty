@@ -1,14 +1,17 @@
 import Head from 'next/head'
-import Layout from 'components/Layout'
+import Link from 'next/link'
 
 function Home() {
   return (
-    <Layout home>
+    <>
       <Head>
-        <title>Rick and Morty webpage</title>
+        <title>Rick and Morty home page</title>
       </Head>
-      <section>Rick and Morty webpage</section>
-    </Layout>
+      <section>Rick and Morty home page</section>
+      <Link href="/characters">
+        <a>Characters</a>
+      </Link>
+    </>
   )
 }
 
