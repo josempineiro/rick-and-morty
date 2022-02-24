@@ -38,11 +38,11 @@ export default function TablePagination({ pageInfo }) {
               <span className="sr-only">Previous</span>
               <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
             </a>
-            {/* Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" */}
+            {/* Current: "z-10 bg-cyan-50 border-cyan-500 text-cyan-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" */}
             <a
               href="#"
               aria-current="page"
-              className="z-10 bg-indigo-50 border-indigo-500 text-indigo-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+              className="z-10 bg-cyan-50 border-cyan-500 text-cyan-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
             >
               1
             </a>

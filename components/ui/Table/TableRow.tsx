@@ -37,7 +37,7 @@ const TableRow = ({ row }) => {
         Admin
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-        <a href="#" className="text-indigo-600 hover:text-indigo-900">
+        <a href="#" className="text-cyan-600 hover:text-cyan-900">
           Edit
         </a>
       </td>

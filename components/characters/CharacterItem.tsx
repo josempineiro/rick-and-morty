@@ -1,17 +1,6 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { MailIcon, PhoneIcon } from '@heroicons/react/solid'
-
-interface Character {
-  id: string
-  name: string
-  status: string
-  species: string
-  type: string
-  gender: string
-  image: string
-  created: string
-}
-
+import { Character } from 'types'
 interface CharacterItemProps {
   item: Character
 }

@@ -9,9 +9,10 @@ interface TableProps {
   renderRow: Function
   data: RowData[]
   className: string
+  loading: boolean
 }
 
-const Table = ({ data, renderRow, className }: TableProps) => {
+const Table = ({ data, renderRow, className, loading }: TableProps) => {
   return (
     <div className={classNames(['flex flex-col', className])}>
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">

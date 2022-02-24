@@ -22,9 +22,16 @@ interface ListProps {
   items: Item[]
   renderItem: Function
   className: string
+
+  loading: boolean
 }
 
-export default function List({ items, renderItem, className }: ListProps) {
+export default function List({
+  items,
+  renderItem,
+  className,
+  loading,
+}: ListProps) {
   return (
     <ul
       role="list"
@@ -34,7 +41,9 @@ export default function List({ items, renderItem, className }: ListProps) {
       ])}
     >
       {items.map((item, index) => (
-        <Fragment key={item.id}>{renderItem({ item, index })}</Fragment>
+        <Fragment key={item.id}>
+          {renderItem({ item, index, loading })}
+        </Fragment>
       ))}
     </ul>
   )
