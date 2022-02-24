@@ -1,29 +1,22 @@
 import Loader from 'components/ui/Loader'
-import CharactersList from 'components/characters/CharactersList'
-import { useCharacters } from 'graphql/hooks'
+import CharacterDetails from 'components/characters/CharacterDetails'
+import { useCharacter } from 'graphql/hooks'
 import { useRouter } from 'next/router'
 
-const CharactersPage = (props) => {
+const CharacterPage = (props) => {
   const {
-    query: { page },
+    query: { id },
   } = useRouter()
-  const { loading, data } = useCharacters({ variables: { page } })
+
+  debugger
+  const { loading, data, error } = useCharacter({ variables: { id } })
   if (loading) {
     return <Loader />
+  } else if (error) {
+    return 'error'
   }
-  const {
-    characters: { info, results: characters },
-  } = data
-  const pageInfo = {
-    ...info,
-    items: characters.length,
-    page,
-  }
-  return (
-    <div>
-      <CharactersList characters={characters} />
-    </div>
-  )
+  const { character } = data
+  return <CharacterDetails character={character} />
 }
 
-export default CharactersPage
+export default CharacterPage
