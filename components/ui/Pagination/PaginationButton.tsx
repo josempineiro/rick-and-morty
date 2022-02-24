@@ -6,6 +6,7 @@ interface PaginationButtonProps {
   onClick: Function
   title: string
   current: number
+  icon?: boolean
   index?: number
   disabled?: boolean
   className?: string
@@ -17,6 +18,7 @@ export default function PaginationButton({
   onClick,
   current,
   index,
+  icon,
   children,
   className,
   disabled,
@@ -30,6 +32,7 @@ export default function PaginationButton({
         className,
         styles.button,
         { [styles.current]: current === index },
+        { [styles.icon]: icon },
       ])}
     >
       <span className="sr-only">title</span>

@@ -1,5 +1,10 @@
 import { Fragment } from 'react'
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid'
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  ChevronDoubleRightIcon,
+  ChevronDoubleLeftIcon,
+} from '@heroicons/react/solid'
 import { PageInfo } from 'types'
 import PaginationButton from './PaginationButton'
 import styles from './Pagination.module.css'
@@ -11,18 +16,10 @@ interface PaginationProps {
 
 export default function Pagination({ pageInfo, onNavigate }: PaginationProps) {
   const { pages, next, prev, current, items } = pageInfo
-  const from = (current - 1) * items + 1
-  const to = current * items
-  const total = pages * items
+  const from = (current - 1) * 20 + 1
+  const to = (current - 1) * 20 + items
+  const total = pages * 20
 
-  const paginationPages = [
-    1,
-    ...Array.from(new Array(3)).map((_, index) => current + (-1 + index)),
-    pages,
-  ].filter(
-    (page, index, paginationPages) =>
-      page > 0 && page <= pages && index === paginationPages.indexOf(page)
-  )
   return (
     <div className="bg-white px-4 py-3 flex items-center justify-between border-gray-200 sm:px-6">
       <div className="flex-1 flex justify-between sm:hidden">
@@ -56,40 +53,50 @@ export default function Pagination({ pageInfo, onNavigate }: PaginationProps) {
           >
             <PaginationButton
               disabled={prev === null}
-              onClick={() => onNavigate(prev)}
-              title={'Previous'}
+              onClick={() => onNavigate(1)}
+              title={'First'}
+              icon
               current={current}
             >
-              <span className="sr-only">Previous</span>
+              <ChevronDoubleLeftIcon className="h-5 w-5" aria-hidden="true" />
+            </PaginationButton>
+            <PaginationButton
+              disabled={prev === null}
+              onClick={() => onNavigate(prev)}
+              title={'Previous'}
+              icon
+              current={current}
+            >
               <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
             </PaginationButton>
-            {paginationPages.map((page, index) => (
-              <Fragment key={page}>
-                <PaginationButton
-                  onClick={() => onNavigate(page)}
-                  aria-current="page"
-                  title={`Page ${page}`}
-                  current={current}
-                  index={page}
-                >
-                  {page}
-                </PaginationButton>
+            <PaginationButton
+              onClick={() => onNavigate(current)}
+              aria-current="page"
+              title={`Page ${current}`}
+              current={current}
+            >
+              {current}
+            </PaginationButton>
 
-                {pages > page + 1 && paginationPages.indexOf(page + 1) === -1 && (
-                  <span className={styles.separator} aria-current="page">
-                    ...
-                  </span>
-                )}
-              </Fragment>
-            ))}
-            <button
+            <PaginationButton
               disabled={next === null}
               onClick={() => onNavigate(next)}
-              className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+              title={'Next page'}
+              icon
+              current={current}
             >
-              <span className="sr-only">Next</span>
               <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
-            </button>
+            </PaginationButton>
+
+            <PaginationButton
+              disabled={next === null}
+              onClick={() => onNavigate(pages)}
+              title={'Last'}
+              icon
+              current={current}
+            >
+              <ChevronDoubleRightIcon className="h-5 w-5" aria-hidden="true" />
+            </PaginationButton>
           </nav>
         </div>
       </div>
