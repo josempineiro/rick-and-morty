@@ -21,7 +21,7 @@ const CharactersPage = (props) => {
   }
   return (
     <div>
-      <CharactersList characters={characters} pageInfo={pageInfo} />
+      <CharactersList characters={characters} />
     </div>
   )
 }

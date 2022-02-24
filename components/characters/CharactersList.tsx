@@ -3,11 +3,11 @@ import Table from 'components/ui/Table'
 import List from 'components/ui/List'
 import CharacterRow from './CharacterRow'
 import CharacterItem from './CharacterItem'
-import { Character } from 'types'
+import { Character, PageInfo } from 'types'
 
 interface CharactersProps {
   characters: Character[]
-  loading: boolean
+  loading?: boolean
 }
 
 const Characters = ({ characters, loading }: CharactersProps) => {

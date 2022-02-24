@@ -1,9 +1,6 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { useTable } from './TableContext'
 
 const TableRow = ({ row }) => {
-  const { schema } = useTable()
   return (
     <tr>
       <td className="px-6 py-4 whitespace-nowrap">
