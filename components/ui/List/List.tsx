@@ -39,7 +39,7 @@ export default function List({
         className,
       ])}
     >
-      <ul role="list" className="divide-y divide-gray-200">
+      <ul role="list" className="flex-1 divide-y divide-gray-200">
         {items.map((item, index) => (
           <Fragment key={item.id}>
             {renderListItem({ item, index, loading })}

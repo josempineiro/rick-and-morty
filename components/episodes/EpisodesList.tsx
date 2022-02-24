@@ -33,13 +33,13 @@ const EpisodesList = ({ episodes, loading, variant }: EpisodesListProps) => {
       return (
         <>
           <Table
-            className="hidden md:flex"
+            className="hidden xl:flex"
             data={episodes}
             renderTableRow={EpisodeTableRow}
             loading={loading}
           />
           <List
-            className="flex md:hidden"
+            className="flex xl:hidden"
             items={episodes}
             renderListItem={EpisodeListItem}
             loading={loading}

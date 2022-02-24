@@ -43,13 +43,13 @@ export default function EpisodeListItem({
                       key={character.id}
                       href={`/characters/${character.id}`}
                     >
-                      <a className="inline-flex items-center justify-center h-6 w-6">
+                      <span className="inline-flex items-center justify-center h-6 w-6">
                         <img
                           className="inline-block h-6 w-6 rounded-full ring-2 ring-white"
                           src={character.image}
                           alt={character.name}
                         />
-                      </a>
+                      </span>
                     </Link>
                   ))}
                   {episode.characters.slice(5).length > 0 && (
