@@ -3,41 +3,54 @@ import Table from 'components/ui/Table'
 import List from 'components/ui/List'
 import EpisodeTableRow from './EpisodeTableRow'
 import EpisodeListItem from './EpisodeListItem'
-import EpisodeGridItem from './EpisodeGridItem'
-import { Character, PageInfo } from 'types'
+import { Episode } from 'types'
 
-interface CharactersProps {
-  characters: Character[]
+interface EpisodesListProps {
+  episodes: Episode[]
   loading?: boolean
+  variant?: string
 }
 
-const Characters = ({ characters, loading }: CharactersProps) => {
-  return (
-    <>
-      <Table
-        className="hidden md:flex"
-        data={characters}
-        renderTableRow={EpisodeTableRow}
-        loading={loading}
-      />
-      <List
-        className="flex md:hidden"
-        items={characters}
-        renderListItem={EpisodeListItem}
-        loading={loading}
-      />
-      <List
-        className="flex md:hidden"
-        items={characters}
-        renderListItem={EpisodeGridItem}
-        loading={loading}
-      />
-    </>
-  )
+const EpisodesList = ({ episodes, loading, variant }: EpisodesListProps) => {
+  switch (variant) {
+    case 'table':
+      return (
+        <Table
+          data={episodes}
+          renderTableRow={EpisodeTableRow}
+          loading={loading}
+        />
+      )
+    case 'list':
+      return (
+        <List
+          items={episodes}
+          renderListItem={EpisodeListItem}
+          loading={loading}
+        />
+      )
+    default:
+      return (
+        <>
+          <Table
+            className="hidden md:flex"
+            data={episodes}
+            renderTableRow={EpisodeTableRow}
+            loading={loading}
+          />
+          <List
+            className="flex md:hidden"
+            items={episodes}
+            renderListItem={EpisodeListItem}
+            loading={loading}
+          />
+        </>
+      )
+  }
 }
 
-Characters.displayName = 'Characters'
+EpisodesList.displayName = 'EpisodesList'
 
-Characters.propTypes = {}
+EpisodesList.propTypes = {}
 
-export default Characters
+export default EpisodesList

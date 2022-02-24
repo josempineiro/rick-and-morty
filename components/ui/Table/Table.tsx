@@ -8,8 +8,8 @@ interface RowData {
 interface TableProps {
   renderTableRow: Function
   data: RowData[]
-  className: string
-  loading: boolean
+  className?: string
+  loading?: boolean
 }
 
 const Table = ({ data, renderTableRow, className, loading }: TableProps) => {

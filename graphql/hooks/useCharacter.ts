@@ -21,6 +21,11 @@ const characterQuery = gql`
         created
         episode
         air_date
+        characters {
+          id
+          image
+          name
+        }
       }
     }
   }

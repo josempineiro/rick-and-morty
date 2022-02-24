@@ -8,10 +8,9 @@ const CharacterPage = (props) => {
     query: { id },
   } = useRouter()
 
-  debugger
   const { loading, data, error } = useCharacter({ variables: { id } })
   if (loading) {
-    return <Loader />
+    return <Loader variant="linear" />
   } else if (error) {
     return 'error'
   }

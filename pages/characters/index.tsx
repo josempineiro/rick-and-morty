@@ -9,10 +9,11 @@ import { useEffect } from 'react'
 const CharactersPage = (props) => {
   const router = useRouter()
   const {
-    query: { page },
+    query: { page = 1 },
   } = router
   const { loading, data, previousData } = useCharacters({
     variables: { page: Number(page) },
+    skip: isNaN(Number(page)),
   })
   if (loading && !previousData) {
     return <Loader variant="linear" />

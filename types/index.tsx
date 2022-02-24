@@ -8,6 +8,7 @@ export interface Episode {
   air_date: string
   episode: string
   created: string
+  characters: Character[]
 }
 export interface Character {
   id: string

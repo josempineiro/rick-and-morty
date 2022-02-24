@@ -21,7 +21,7 @@ interface Item {
 interface ListProps {
   items: Item[]
   renderListItem: Function
-  className: string
+  className?: string
 
   loading: boolean
 }
