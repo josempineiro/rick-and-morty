@@ -1,3 +1,14 @@
+export interface Location {
+  id: string
+  name: string
+}
+export interface Episode {
+  id: string
+  name: string
+  air_date: string
+  episode: string
+  created: string
+}
 export interface Character {
   id: string
   name: string
@@ -7,6 +18,8 @@ export interface Character {
   gender: string
   image: string
   created: string
+  location: Location
+  episode: Episode[]
 }
 
 export interface PageInfo {

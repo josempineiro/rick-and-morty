@@ -20,7 +20,7 @@ interface Item {
 
 interface ListProps {
   items: Item[]
-  renderItem: Function
+  renderListItem: Function
   className: string
 
   loading: boolean
@@ -28,23 +28,24 @@ interface ListProps {
 
 export default function List({
   items,
-  renderItem,
+  renderListItem,
   className,
   loading,
 }: ListProps) {
   return (
-    <ul
-      role="list"
+    <div
       className={classNames([
-        'grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3',
+        'bg-white shadow overflow-hidden sm:rounded-md',
         className,
       ])}
     >
-      {items.map((item, index) => (
-        <Fragment key={item.id}>
-          {renderItem({ item, index, loading })}
-        </Fragment>
-      ))}
-    </ul>
+      <ul role="list" className="divide-y divide-gray-200">
+        {items.map((item, index) => (
+          <Fragment key={item.id}>
+            {renderListItem({ item, index, loading })}
+          </Fragment>
+        ))}
+      </ul>
+    </div>
   )
 }

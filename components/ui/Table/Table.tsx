@@ -6,13 +6,13 @@ interface RowData {
 }
 
 interface TableProps {
-  renderRow: Function
+  renderTableRow: Function
   data: RowData[]
   className: string
   loading: boolean
 }
 
-const Table = ({ data, renderRow, className, loading }: TableProps) => {
+const Table = ({ data, renderTableRow, className, loading }: TableProps) => {
   return (
     <div className={classNames(['flex flex-col', className])}>
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -52,7 +52,9 @@ const Table = ({ data, renderRow, className, loading }: TableProps) => {
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {data.map((row, index) => (
-                  <Fragment key={row.id}>{renderRow({ row, index })}</Fragment>
+                  <Fragment key={row.id}>
+                    {renderTableRow({ row, index })}
+                  </Fragment>
                 ))}
               </tbody>
             </table>

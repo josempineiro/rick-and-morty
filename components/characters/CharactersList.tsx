@@ -1,8 +1,8 @@
 import React from 'react'
 import Table from 'components/ui/Table'
 import List from 'components/ui/List'
-import CharacterRow from './CharacterRow'
-import CharacterItem from './CharacterItem'
+import CharacterTableRow from './CharacterTableRow'
+import CharacterListItem from './CharacterListItem'
 import { Character, PageInfo } from 'types'
 
 interface CharactersProps {
@@ -16,13 +16,13 @@ const Characters = ({ characters, loading }: CharactersProps) => {
       <Table
         className="hidden md:flex"
         data={characters}
-        renderRow={CharacterRow}
+        renderTableRow={CharacterTableRow}
         loading={loading}
       />
       <List
         className="flex md:hidden"
         items={characters}
-        renderItem={CharacterItem}
+        renderListItem={CharacterListItem}
         loading={loading}
       />
     </>

@@ -1,11 +1,13 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { MailIcon, PhoneIcon } from '@heroicons/react/solid'
 import { Character } from 'types'
-interface CharacterItemProps {
+interface CharacterListItemProps {
   item: Character
 }
 
-export default function CharacterItem({ item: character }: CharacterItemProps) {
+export default function CharacterListItem({
+  item: character,
+}: CharacterListItemProps) {
   return (
     <li className="col-span-1 bg-white rounded-lg shadow divide-y divide-gray-200">
       <div className="w-full flex items-center justify-between p-6 space-x-6">

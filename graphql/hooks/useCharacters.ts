@@ -18,6 +18,10 @@ const charactersQuery = gql`
         gender
         image
         created
+        location {
+          name
+          id
+        }
       }
     }
   }
