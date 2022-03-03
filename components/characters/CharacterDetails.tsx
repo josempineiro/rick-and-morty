@@ -1,41 +1,41 @@
-import { useState } from 'react'
-import Link from 'next/link'
-import { CollectionIcon, FilmIcon } from '@heroicons/react/outline'
-import { ChevronLeftIcon, MailIcon, PhoneIcon } from '@heroicons/react/solid'
-import { Character, Episode } from 'types'
-import Tabs from 'components/ui/Tabs'
-import EpisodesList from 'components/episodes/EpisodesList'
-import SeasonsList from 'components/seasons/SeasonsList'
+import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { CollectionIcon, FilmIcon } from "@heroicons/react/outline";
+import { ChevronLeftIcon, MailIcon, PhoneIcon } from "@heroicons/react/solid";
+import { Character, Episode } from "types";
+import Tabs from "components/ui/Tabs";
+import EpisodesList from "components/episodes/EpisodesList";
+import SeasonsList from "components/seasons/SeasonsList";
 interface CharacterProps {
-  character: Character
+  character: Character;
 }
 
 const CharacterDetails = ({ character }: CharacterProps) => {
   const [tabs, setTabs] = useState([
     {
-      id: 'seasons',
-      title: 'Seasons',
+      id: "seasons",
+      title: "Seasons",
       current: true,
       icon: CollectionIcon,
     },
     {
-      id: 'episodes',
-      title: 'Episodes',
+      id: "episodes",
+      title: "Episodes",
       current: false,
       icon: FilmIcon,
     },
-  ])
+  ]);
 
-  const currentTab = tabs.find(({ current }) => current)
+  const currentTab = tabs.find(({ current }) => current);
 
   function handleChangeTab(currentTab) {
-    debugger
     setTabs((tabs) =>
       tabs.map((tab) => ({
         ...tab,
         current: currentTab.id === tab.id,
       }))
-    )
+    );
   }
 
   return (
@@ -94,10 +94,10 @@ const CharacterDetails = ({ character }: CharacterProps) => {
             </div>
             <div className="mt-8 max-w-5xl mx-auto px-4 pb-12 sm:px-6 lg:px-8">
               <Tabs tabs={tabs} onChangeTab={handleChangeTab} />
-              {currentTab.id === 'episodes' && (
+              {currentTab.id === "episodes" && (
                 <EpisodesList variant="list" episodes={character.episode} />
               )}
-              {currentTab.id === 'seasons' && (
+              {currentTab.id === "seasons" && (
                 <SeasonsList episodes={character.episode} />
               )}
             </div>
@@ -105,11 +105,11 @@ const CharacterDetails = ({ character }: CharacterProps) => {
         </main>
       </div>
     </div>
-  )
-}
+  );
+};
 
-CharacterDetails.displayName = 'CharacterDetails'
+CharacterDetails.displayName = "CharacterDetails";
 
-CharacterDetails.propTypes = {}
+CharacterDetails.propTypes = {};
 
-export default CharacterDetails
+export default CharacterDetails;

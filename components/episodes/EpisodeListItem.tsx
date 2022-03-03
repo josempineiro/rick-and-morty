@@ -1,9 +1,10 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { CalendarIcon, ChevronRightIcon } from '@heroicons/react/solid'
-import Link from 'next/link'
-import { Episode } from 'types'
+import { CalendarIcon, ChevronRightIcon } from "@heroicons/react/solid";
+import Link from "next/link";
+import Image from "next/image";
+import { Episode } from "types";
 interface EpisodeListItemProps {
-  item: Episode
+  item: Episode;
 }
 
 export default function EpisodeListItem({
@@ -28,7 +29,7 @@ export default function EpisodeListItem({
                       aria-hidden="true"
                     />
                     <p>
-                      Broadcast live on{' '}
+                      Broadcast live on{" "}
                       <time dateTime={episode.air_date}>
                         {new Date(episode.air_date).toDateString()}
                       </time>
@@ -42,6 +43,7 @@ export default function EpisodeListItem({
                     <Link
                       key={character.id}
                       href={`/characters/${character.id}`}
+                      passHref
                     >
                       <span className="inline-flex items-center justify-center h-6 w-6">
                         <img
@@ -72,5 +74,5 @@ export default function EpisodeListItem({
         </a>
       </Link>
     </li>
-  )
+  );
 }

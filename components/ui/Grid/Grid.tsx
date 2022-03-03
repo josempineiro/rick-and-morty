@@ -9,8 +9,7 @@ interface Item {
 interface GridProps {
   items: Item[]
   renderGridItem: Function
-  className: string
-
+  className?: string
   loading: boolean
 }
 

@@ -1,10 +1,11 @@
-import React from 'react'
-import Link from 'next/link'
-import { Episode } from 'types'
-import { ChevronLeftIcon } from '@heroicons/react/solid'
-import CharactersList from 'components/characters/CharactersList'
+import React from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { Episode } from "types";
+import { ChevronLeftIcon } from "@heroicons/react/solid";
+import CharactersList from "components/characters/CharactersList";
 interface EpisodeDetailsProps {
-  episode: Episode
+  episode: Episode;
 }
 
 const EpisodeDetails = ({ episode }: EpisodeDetailsProps) => {
@@ -70,11 +71,11 @@ const EpisodeDetails = ({ episode }: EpisodeDetailsProps) => {
         </main>
       </div>
     </div>
-  )
-}
+  );
+};
 
-EpisodeDetails.displayName = 'EpisodeDetails'
+EpisodeDetails.displayName = "EpisodeDetails";
 
-EpisodeDetails.propTypes = {}
+EpisodeDetails.propTypes = {};
 
-export default EpisodeDetails
+export default EpisodeDetails;

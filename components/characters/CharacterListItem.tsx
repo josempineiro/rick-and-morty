@@ -1,10 +1,11 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { UserIcon, ChevronRightIcon } from '@heroicons/react/solid'
-import Link from 'next/link'
-import { Character } from 'types'
-import CharacterStatus from './CharacterStatus'
+import Image from "next/image";
+import { UserIcon, ChevronRightIcon } from "@heroicons/react/solid";
+import Link from "next/link";
+import { Character } from "types";
+import CharacterStatus from "./CharacterStatus";
 interface CharacterListItemProps {
-  item: Character
+  item: Character;
 }
 
 export default function CharacterListItem({
@@ -39,7 +40,7 @@ export default function CharacterListItem({
                 <div className="hidden md:block">
                   <div>
                     <p className="text-sm text-gray-900 truncate">
-                      Created on{' '}
+                      Created on{" "}
                       <time dateTime={character.created}>
                         {new Date(character.created).toDateString()}
                       </time>
@@ -61,5 +62,5 @@ export default function CharacterListItem({
         </a>
       </Link>
     </li>
-  )
+  );
 }

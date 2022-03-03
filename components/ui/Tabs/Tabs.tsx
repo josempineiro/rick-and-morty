@@ -3,9 +3,8 @@ import { SVGProps } from 'react'
 
 interface Tab {
   title: string
-  to: string
   id: string
-  icon: (props: SVGProps<SVGSVGElement>) => Element
+  icon: (props: SVGProps<SVGSVGElement>) => JSX.Element
   current: boolean
 }
 

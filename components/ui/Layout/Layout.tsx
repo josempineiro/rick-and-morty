@@ -1,47 +1,36 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from './Layout.module.css'
-import Link from 'next/link'
-
-interface LayoutProps {
-  children: React.ReactNode
-  home?: boolean
-}
-
-import { Fragment, useState } from 'react'
-import { Dialog, Menu, Transition } from '@headlessui/react'
+import { Fragment, useState } from "react";
+import { Dialog, Transition } from "@headlessui/react";
 import {
-  BellIcon,
-  CalendarIcon,
-  ChartBarIcon,
+  CodeIcon,
   FolderIcon,
-  HomeIcon,
-  FilmIcon,
   LocationMarkerIcon,
   MenuAlt2Icon,
   UsersIcon,
   XIcon,
-} from '@heroicons/react/outline'
-import { SearchIcon } from '@heroicons/react/solid'
+} from "@heroicons/react/outline";
+import { SearchIcon } from "@heroicons/react/solid";
+import Head from "next/head";
+import Image from "next/image";
+import styles from "./Layout.module.css";
+import NavLink from "./NavLink";
 
-const navigation = [
-  { name: 'Characters', href: '#', icon: UsersIcon, current: true },
-  { name: 'Locations', href: '#', icon: LocationMarkerIcon, current: false },
-  { name: 'Episodes', href: '#', icon: FolderIcon, current: false },
-]
-
-const userNavigation = [
-  { name: 'Your Profile', href: '#' },
-  { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' },
-]
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+interface LayoutProps {
+  children: React.ReactNode;
+  home?: boolean;
 }
 
+const navigation = [
+  { text: "Characters", href: "/characters", icon: UsersIcon },
+  {
+    text: "Locations",
+    href: "/locations",
+    icon: LocationMarkerIcon,
+  },
+  { text: "Episodes", href: "/episodes", icon: FolderIcon },
+];
+
 export default function Layout({ children }: LayoutProps) {
-  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <>
@@ -110,27 +99,7 @@ export default function Layout({ children }: LayoutProps) {
                 <div className="mt-5 flex-1 h-0 overflow-y-auto">
                   <nav className="px-2 space-y-1">
                     {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className={classNames(
-                          item.current
-                            ? 'bg-gray-900 text-white'
-                            : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                          'group flex items-center px-2 py-2 text-base font-medium rounded-md'
-                        )}
-                      >
-                        <item.icon
-                          className={classNames(
-                            item.current
-                              ? 'text-gray-300'
-                              : 'text-gray-400 group-hover:text-gray-300',
-                            'mr-4 flex-shrink-0 h-6 w-6'
-                          )}
-                          aria-hidden="true"
-                        />
-                        {item.name}
-                      </a>
+                      <NavLink key={item.text} item={item} />
                     ))}
                   </nav>
                 </div>
@@ -147,32 +116,18 @@ export default function Layout({ children }: LayoutProps) {
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="flex-1 flex flex-col min-h-0 bg-gray-800">
             <div className="flex items-center h-16 flex-shrink-0 px-4 bg-gray-900">
-              <img className="h-12 w-auto" src="/logo.svg" alt="Workflow" />
+              <img
+                className="h-12 w-auto"
+                src="/logo.svg"
+                alt="Workflow"
+                width="164"
+                height="48"
+              />
             </div>
             <div className="flex-1 flex flex-col overflow-y-auto">
               <nav className="flex-1 px-2 py-4 space-y-1">
                 {navigation.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className={classNames(
-                      item.current
-                        ? 'bg-gray-900 text-white'
-                        : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                      'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
-                    )}
-                  >
-                    <item.icon
-                      className={classNames(
-                        item.current
-                          ? 'text-gray-300'
-                          : 'text-gray-400 group-hover:text-gray-300',
-                        'mr-3 flex-shrink-0 h-6 w-6'
-                      )}
-                      aria-hidden="true"
-                    />
-                    {item.name}
-                  </a>
+                  <NavLink key={item.text} item={item} />
                 ))}
               </nav>
             </div>
@@ -208,55 +163,32 @@ export default function Layout({ children }: LayoutProps) {
                   </div>
                 </form>
               </div>
-              <div className="ml-4 flex items-center md:ml-6">
-                <button
-                  type="button"
+              <div className="ml-4 flex items-center md:ml-6 space-x-3">
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://github.com/josempineiro/rick-and-morty"
                   className="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500"
                 >
-                  <span className="sr-only">View notifications</span>
-                  <BellIcon className="h-6 w-6" aria-hidden="true" />
-                </button>
+                  <span className="sr-only">View code</span>
+                  <CodeIcon className="h-6 w-6" aria-hidden="true" />
+                </a>
 
-                {/* Profile dropdown */}
-                <Menu as="div" className="ml-3 relative">
-                  <div>
-                    <Menu.Button className="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">
-                      <span className="sr-only">Open user menu</span>
-                      <img
-                        className="h-8 w-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt=""
-                      />
-                    </Menu.Button>
-                  </div>
-                  <Transition
-                    as={Fragment}
-                    enter="transition ease-out duration-100"
-                    enterFrom="transform opacity-0 scale-95"
-                    enterTo="transform opacity-100 scale-100"
-                    leave="transition ease-in duration-75"
-                    leaveFrom="transform opacity-100 scale-100"
-                    leaveTo="transform opacity-0 scale-95"
-                  >
-                    <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      {userNavigation.map((item) => (
-                        <Menu.Item key={item.name}>
-                          {({ active }) => (
-                            <a
-                              href={item.href}
-                              className={classNames(
-                                active ? 'bg-gray-100' : '',
-                                'block px-4 py-2 text-sm text-gray-700'
-                              )}
-                            >
-                              {item.name}
-                            </a>
-                          )}
-                        </Menu.Item>
-                      ))}
-                    </Menu.Items>
-                  </Transition>
-                </Menu>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://github.com/josempineiro"
+                  className="rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500"
+                >
+                  <span className="sr-only">Open user menu</span>
+                  <img
+                    className="h-8 w-8 rounded-full"
+                    src="https://avatars.githubusercontent.com/u/71317594"
+                    alt=""
+                    width="32"
+                    height="32"
+                  />
+                </a>
               </div>
             </div>
           </div>
@@ -271,5 +203,5 @@ export default function Layout({ children }: LayoutProps) {
         </div>
       </div>
     </>
-  )
+  );
 }

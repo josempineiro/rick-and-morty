@@ -1,9 +1,10 @@
-import React from 'react'
-import { Character } from 'types'
-import Link from 'next/link'
-import CharacterStatus from './CharacterStatus'
+import React from "react";
+import { Character } from "types";
+import Link from "next/link";
+import Image from "next/image";
+import CharacterStatus from "./CharacterStatus";
 interface CharacterTableRowProps {
-  row: Character
+  row: Character;
 }
 
 const CharacterTableRow = ({ row: character }: CharacterTableRowProps) => {
@@ -42,9 +43,9 @@ const CharacterTableRow = ({ row: character }: CharacterTableRowProps) => {
         </Link>
       </td>
     </tr>
-  )
-}
+  );
+};
 
-CharacterTableRow.displayName = 'CharacterTableRow'
+CharacterTableRow.displayName = "CharacterTableRow";
 
-export default CharacterTableRow
+export default CharacterTableRow;

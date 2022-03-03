@@ -1,9 +1,10 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { MailIcon, PhoneIcon } from '@heroicons/react/solid'
-import { Character } from 'types'
+import Image from "next/image";
+import { MailIcon, PhoneIcon } from "@heroicons/react/solid";
+import { Character } from "types";
 
 interface CharacterGridItemProps {
-  item: Character
+  item: Character;
 }
 
 export default function CharacterGridItem({
@@ -54,5 +55,5 @@ export default function CharacterGridItem({
         </div>
       </div>
     </li>
-  )
+  );
 }
