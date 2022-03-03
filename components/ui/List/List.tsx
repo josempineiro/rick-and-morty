@@ -23,7 +23,7 @@ interface ListProps {
   renderListItem: Function
   className?: string
 
-  loading: boolean
+  loading?: boolean
 }
 
 export default function List({

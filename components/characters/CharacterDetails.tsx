@@ -1,13 +1,43 @@
-import React from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
-import { Character } from 'types'
+import { CollectionIcon, FilmIcon } from '@heroicons/react/outline'
 import { ChevronLeftIcon, MailIcon, PhoneIcon } from '@heroicons/react/solid'
+import { Character, Episode } from 'types'
+import Tabs from 'components/ui/Tabs'
 import EpisodesList from 'components/episodes/EpisodesList'
+import SeasonsList from 'components/seasons/SeasonsList'
 interface CharacterProps {
   character: Character
 }
 
 const CharacterDetails = ({ character }: CharacterProps) => {
+  const [tabs, setTabs] = useState([
+    {
+      id: 'seasons',
+      title: 'Seasons',
+      current: true,
+      icon: CollectionIcon,
+    },
+    {
+      id: 'episodes',
+      title: 'Episodes',
+      current: false,
+      icon: FilmIcon,
+    },
+  ])
+
+  const currentTab = tabs.find(({ current }) => current)
+
+  function handleChangeTab(currentTab) {
+    debugger
+    setTabs((tabs) =>
+      tabs.map((tab) => ({
+        ...tab,
+        current: currentTab.id === tab.id,
+      }))
+    )
+  }
+
   return (
     <div className="flex flex-col min-w-0 flex-1 overflow-hidden">
       <div className="flex-1 relative z-0 flex overflow-hidden">
@@ -63,8 +93,13 @@ const CharacterDetails = ({ character }: CharacterProps) => {
               </div>
             </div>
             <div className="mt-8 max-w-5xl mx-auto px-4 pb-12 sm:px-6 lg:px-8">
-              <h2 className="text-sm font-medium text-gray-500">Episodes</h2>
-              <EpisodesList variant="list" episodes={character.episode} />
+              <Tabs tabs={tabs} onChangeTab={handleChangeTab} />
+              {currentTab.id === 'episodes' && (
+                <EpisodesList variant="list" episodes={character.episode} />
+              )}
+              {currentTab.id === 'seasons' && (
+                <SeasonsList episodes={character.episode} />
+              )}
             </div>
           </article>
         </main>
