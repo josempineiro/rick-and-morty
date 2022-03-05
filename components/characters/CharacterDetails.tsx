@@ -41,23 +41,7 @@ const CharacterDetails = ({ character }: CharacterProps) => {
   return (
     <div className="flex flex-col min-w-0 flex-1 overflow-hidden">
       <div className="flex-1 relative z-0 flex overflow-hidden">
-        <main className="flex-1 relative z-0 overflow-y-auto focus:outline-none xl:order-last">
-          {/* Breadcrumb */}
-          <nav
-            className="flex items-start px-4 py-3 sm:px-6 lg:px-8 xl:hidden"
-            aria-label="Breadcrumb"
-          >
-            <Link href="/characters">
-              <a className="inline-flex items-center space-x-3 text-sm font-medium text-gray-900">
-                <ChevronLeftIcon
-                  className="-ml-2 h-5 w-5 text-gray-400"
-                  aria-hidden="true"
-                />
-                <span>Characters</span>
-              </a>
-            </Link>
-          </nav>
-
+        <div className="flex-1 relative z-0 overflow-y-auto focus:outline-none xl:order-last">
           <article>
             {/* Profile header */}
             <div>
@@ -102,7 +86,7 @@ const CharacterDetails = ({ character }: CharacterProps) => {
               )}
             </div>
           </article>
-        </main>
+        </div>
       </div>
     </div>
   );

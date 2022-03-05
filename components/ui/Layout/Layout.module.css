@@ -11,3 +11,10 @@
 .backToHome {
   margin: 3rem 0 0;
 }
+
+.Popover {
+  @apply fixed top-0 left-0 z-20 pointer-events-none;
+}
+.Popover > * {
+  @apply pointer-events-auto;
+}

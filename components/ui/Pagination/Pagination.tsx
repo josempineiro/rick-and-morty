@@ -1,27 +1,27 @@
-import { Fragment } from 'react'
+import { Fragment } from "react";
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
   ChevronDoubleRightIcon,
   ChevronDoubleLeftIcon,
-} from '@heroicons/react/solid'
-import { PageInfo } from 'types'
-import PaginationButton from './PaginationButton'
-import styles from './Pagination.module.css'
+} from "@heroicons/react/solid";
+import { PageInfo } from "types";
+import PaginationButton from "./PaginationButton";
+import styles from "./Pagination.module.css";
 
 interface PaginationProps {
-  pageInfo: PageInfo
-  onNavigate: Function
+  pageInfo: PageInfo;
+  onNavigate: Function;
 }
 
 export default function Pagination({ pageInfo, onNavigate }: PaginationProps) {
-  const { pages, next, prev, current, items } = pageInfo
-  const from = (current - 1) * 20 + 1
-  const to = (current - 1) * 20 + items
-  const total = pages * 20
+  const { pages, next, prev, current, items } = pageInfo;
+  const from = (current - 1) * 20 + 1;
+  const to = (current - 1) * 20 + items;
+  const total = pages * 20;
 
   return (
-    <div className="bg-white px-4 py-3 flex items-center justify-between border-gray-200 sm:px-6">
+    <div className=" px-4 py-3 flex items-center justify-between border-gray-200 sm:px-6">
       <div className="flex-1 flex justify-between sm:hidden">
         <button
           disabled={prev === null}
@@ -41,8 +41,8 @@ export default function Pagination({ pageInfo, onNavigate }: PaginationProps) {
       <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
         <div>
           <p className="text-sm text-gray-700">
-            Showing <span className="font-medium">{from}</span> to{' '}
-            <span className="font-medium">{to}</span> of{' '}
+            Showing <span className="font-medium">{from}</span> to{" "}
+            <span className="font-medium">{to}</span> of{" "}
             <span className="font-medium">{total}</span> results
           </p>
         </div>
@@ -54,7 +54,7 @@ export default function Pagination({ pageInfo, onNavigate }: PaginationProps) {
             <PaginationButton
               disabled={prev === null}
               onClick={() => onNavigate(1)}
-              title={'First'}
+              title={"First"}
               icon
               current={current}
             >
@@ -63,7 +63,7 @@ export default function Pagination({ pageInfo, onNavigate }: PaginationProps) {
             <PaginationButton
               disabled={prev === null}
               onClick={() => onNavigate(prev)}
-              title={'Previous'}
+              title={"Previous"}
               icon
               current={current}
             >
@@ -81,7 +81,7 @@ export default function Pagination({ pageInfo, onNavigate }: PaginationProps) {
             <PaginationButton
               disabled={next === null}
               onClick={() => onNavigate(next)}
-              title={'Next page'}
+              title={"Next page"}
               icon
               current={current}
             >
@@ -91,7 +91,7 @@ export default function Pagination({ pageInfo, onNavigate }: PaginationProps) {
             <PaginationButton
               disabled={next === null}
               onClick={() => onNavigate(pages)}
-              title={'Last'}
+              title={"Last"}
               icon
               current={current}
             >
@@ -101,5 +101,5 @@ export default function Pagination({ pageInfo, onNavigate }: PaginationProps) {
         </div>
       </div>
     </div>
-  )
+  );
 }
