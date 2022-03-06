@@ -3,7 +3,7 @@ import Filter from "components/ui/Filter";
 const CharactersFilter = (props) => {
   return (
     <Filter
-      className="space-y-4 md:flex md:space-x-4 md:space-y-0"
+      title="Filter characters"
       filters={[
         {
           label: "Name",

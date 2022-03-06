@@ -21,7 +21,7 @@ export default function Pagination({ pageInfo, onNavigate }: PaginationProps) {
   const total = pages * 20;
 
   return (
-    <div className=" px-4 py-3 flex items-center justify-between border-gray-200 sm:px-6">
+    <div className="py-2 flex items-center justify-between border-gray-200 sm:px-6 sm:py-4">
       <div className="flex-1 flex justify-between sm:hidden">
         <button
           disabled={prev === null}

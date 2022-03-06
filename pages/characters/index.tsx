@@ -52,11 +52,7 @@ const CharactersPage = (props) => {
     <Page title="Characters">
       <Pagination pageInfo={pageInfo} onNavigate={handleNavigate} />
       {loading && <Loader variant="linear" />}
-      <CharactersFilter
-        filterValues={filter}
-        submitOnChange
-        onSubmit={handleFilter}
-      />
+      <CharactersFilter filterValues={filter} onSubmit={handleFilter} />
       <CharactersList loading={loading} characters={characters} />
       <Pagination pageInfo={pageInfo} onNavigate={handleNavigate} />
     </Page>
