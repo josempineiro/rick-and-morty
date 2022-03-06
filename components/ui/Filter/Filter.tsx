@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import _ from "lodash";
 import { Formik, FormikHelpers, useFormikContext } from "formik";
 import FilterField from "./FilterField";
+import classNames from "classnames";
 
 interface Filter {
   name: string;
@@ -19,6 +20,7 @@ interface FilterProps {
   onSubmit: SubmitFunction;
   filterValues: object;
   validate?: Function;
+  className?: string;
 }
 const AutoSubmit = () => {
   // Grab values and submitForm from context
@@ -48,16 +50,29 @@ const Filter = ({
   filters,
   onSubmit,
   submitOnChange,
+  className,
 }: FilterProps) => {
   return (
     <Formik initialValues={filterValues} onSubmit={onSubmit}>
       {(props) => (
-        <form onSubmit={props.handleSubmit} className="space-y-4">
+        <form
+          onSubmit={props.handleSubmit}
+          className="space-y-4 md:flex md:space-x-4 md:space-y-0 md:py-3"
+        >
           {filters.map((filter) => (
-            <FilterField key={filter.name} {...filter} />
+            <FilterField
+              key={filter.name}
+              {...filter}
+              className="space-y-4 md:flex md:space-x-4 md:space-y-0 md:flex-1"
+            />
           ))}
           {submitOnChange && <AutoSubmit />}
-          <button type="submit">Submit</button>
+          <button
+            type="submit"
+            className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500"
+          >
+            Filter
+          </button>
         </form>
       )}
     </Formik>

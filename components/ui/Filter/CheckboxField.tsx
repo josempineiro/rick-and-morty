@@ -1,12 +1,13 @@
 import React from "react";
 import { useField, Field } from "formik";
 import { FieldProps } from "types";
+import classNames from "classnames";
 
-function CheckboxField({ label, options, ...props }: FieldProps) {
+function CheckboxField({ label, options, className, ...props }: FieldProps) {
   const [field, meta] = useField(props);
   const selected = options.find((option) => option.value === field.value);
   return (
-    <fieldset className="space-y-5">
+    <fieldset className={classNames(className)}>
       <legend className="sr-only">{label}</legend>
       {options.map((option) => (
         <div key={option.value} className="relative flex items-start">

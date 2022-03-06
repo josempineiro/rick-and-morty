@@ -1,19 +1,18 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Fragment, useState } from "react";
+import classNames from "classnames";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
 import { useField } from "formik";
 import { FieldProps } from "types";
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
-
 export default function SelectField({
+  variant,
   label,
   hint,
   options,
   placeholder,
+  className,
   ...props
 }: FieldProps) {
   const [field, meta, helpers] = useField(props);
@@ -24,21 +23,25 @@ export default function SelectField({
   };
 
   return (
-    <div>
-      <Listbox value={field.value} onChange={handleChange}>
+    <div className={classNames(className)}>
+      <Listbox value={selected} onChange={handleChange}>
         {({ open }) => (
           <>
-            <Listbox.Label className="block text-sm font-medium text-gray-700">
-              {label}
-            </Listbox.Label>
-            <div className="mt-1 relative">
+            {variant === "labeled" && (
+              <Listbox.Label className="block text-sm font-medium text-gray-700">
+                {label}
+              </Listbox.Label>
+            )}
+            <div className="relative w-full">
               <Listbox.Button className="bg-white relative w-full border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm">
                 {selected && (
                   <span className="block truncate">{selected.label}</span>
                 )}
                 {!selected && (
                   <span className="block truncate text-gray-500">
-                    {placeholder || "Select an option"}
+                    {variant === "labeled" &&
+                      (placeholder || "Select an option")}
+                    {variant !== "labeled" && label}
                   </span>
                 )}
                 <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
@@ -69,7 +72,22 @@ export default function SelectField({
                       value={option}
                     >
                       {({ selected, active }) => (
-                        <>
+                        <div className="flex space-x-2 items-center">
+                          <input
+                            type="radio"
+                            name={`${props.name}-${option.value}`}
+                            id={`${props.name}-${option.value}`}
+                            checked={selected}
+                            aria-describedby={`${option.value}-description`}
+                            className="focus:ring-cyan-500 h-4 w-4 text-cyan-600 border-gray-300"
+                            style={{
+                              backgroundColor: selected && active && "white",
+                              backgroundImage:
+                                selected &&
+                                active &&
+                                `url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='rgb(8, 145, 178)' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e")`,
+                            }}
+                          />
                           <span
                             className={classNames(
                               selected ? "font-semibold" : "font-normal",
@@ -92,7 +110,7 @@ export default function SelectField({
                               />
                             </span>
                           ) : null}
-                        </>
+                        </div>
                       )}
                     </Listbox.Option>
                   ))}
@@ -108,7 +126,8 @@ export default function SelectField({
           {meta.error}
         </p>
       ) : (
-        hint && (
+        hint &&
+        variant === "labeled" && (
           <p className="mt-2 text-sm text-gray-500" id="email-description">
             {hint}
           </p>

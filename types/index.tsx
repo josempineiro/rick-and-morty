@@ -39,10 +39,12 @@ export interface Option {
 }
 
 export interface FieldProps {
+  variant: string;
   label: string;
   hint?: string;
   id: string;
   name: string;
   placeholder: string;
   options?: Option[];
+  className?: string;
 }

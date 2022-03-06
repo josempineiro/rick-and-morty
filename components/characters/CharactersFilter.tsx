@@ -3,6 +3,7 @@ import Filter from "components/ui/Filter";
 const CharactersFilter = (props) => {
   return (
     <Filter
+      className="space-y-4 md:flex md:space-x-4 md:space-y-0"
       filters={[
         {
           label: "Name",
@@ -14,7 +15,7 @@ const CharactersFilter = (props) => {
         {
           label: "Status",
           name: "status",
-          type: "radio",
+          type: "select",
           hint: "Filter by status",
           options: [
             { label: "Alive", value: "alive" },
@@ -25,13 +26,26 @@ const CharactersFilter = (props) => {
         {
           label: "Species",
           name: "species",
-          type: "radio",
+          type: "select",
           hint: "Filter by species",
           placeholder: "Select an specie",
           options: [
             { label: "Human", value: "Human" },
             { label: "Alien", value: "Alien" },
             { label: "Unknown", value: "unknown" },
+          ],
+        },
+        ,
+        {
+          label: "Gender",
+          name: "gender",
+          type: "select",
+          hint: "Filter by gender",
+          placeholder: "Select an gender",
+          options: [
+            { label: "Male", value: "Male" },
+            { label: "Female", value: "Female" },
+            { label: "Genderless", value: "Genderless" },
           ],
         },
       ]}
