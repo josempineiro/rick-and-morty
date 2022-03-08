@@ -39,7 +39,7 @@ const LocationDetails = ({ location }: LocationDetailsProps) => {
                   alt=""
                 />
               </div>
-              <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="-mt-12 sm:-mt-16 sm:flex sm:items-end sm:space-x-5">
                   <div className="flex">
                     <img
@@ -63,7 +63,7 @@ const LocationDetails = ({ location }: LocationDetailsProps) => {
                 </div>
               </div>
             </div>
-            <div className="mt-8 max-w-5xl mx-auto px-4 pb-12 sm:px-6 lg:px-8">
+            <div className="mt-8 max-w-6xl mx-auto px-4 pb-12 sm:px-6 lg:px-8">
               <h2 className="text-sm font-medium text-gray-500">Residents</h2>
               <CharactersList characters={location.residents} />
             </div>

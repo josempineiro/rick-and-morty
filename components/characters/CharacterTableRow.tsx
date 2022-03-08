@@ -39,7 +39,11 @@ const CharacterTableRow = ({ row: character }: CharacterTableRowProps) => {
         </div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
-        <div className="text-sm text-gray-500">{character.location.name}</div>
+        <div className="text-sm text-gray-500">
+          <Link href={`/locations/${character.location.id}`}>
+            <a>{character.location.name}</a>
+          </Link>
+        </div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
         <Link href={`/characters/${character.id}`}>
