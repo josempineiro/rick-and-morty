@@ -50,7 +50,6 @@ const CharactersPage = (props) => {
   const debounceHandleFilter = _.debounce(handleFilter, 500);
   return (
     <Page title="Characters">
-      <Pagination pageInfo={pageInfo} onNavigate={handleNavigate} />
       {loading && <Loader variant="linear" />}
       <CharactersFilter filterValues={filter} onSubmit={handleFilter} />
       <CharactersList loading={loading} characters={characters} />

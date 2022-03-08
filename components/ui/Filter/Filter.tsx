@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef, Fragment } from "react";
+import _ from "lodash";
+import classNames from "classnames";
+import { Formik, FormikHelpers, useFormikContext } from "formik";
 import { Dialog, Transition } from "@headlessui/react";
 import { XIcon, FilterIcon } from "@heroicons/react/outline";
-import _ from "lodash";
-import { Formik, FormikHelpers, useFormikContext } from "formik";
+import Button from "components/ui/Button";
 import FilterField from "./FilterField";
-import classNames from "classnames";
 
 interface Filter {
   name: string;
@@ -74,12 +75,12 @@ const Filter = ({
           ))}
           {submitOnChange && <AutoSubmit />}
           <div className="flex justify-end">
-            <button
+            <Button
               type="submit"
               className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500"
             >
               Filter
-            </button>
+            </Button>
           </div>
         </form>
       )}
@@ -96,13 +97,12 @@ const ReponsiveFilter = (props) => {
   return (
     <>
       <div className="flex md:hidden py-2 justify-end">
-        <button
+        <Button
           onClick={() => setOpen(true)}
           type="button"
-          className=" inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500"
-        >
-          <FilterIcon className="h-6 w-6" />
-        </button>
+          variant="tertiary"
+          icon={<FilterIcon />}
+        />
       </div>
       <Transition.Root show={open} as={Fragment}>
         <Dialog
@@ -131,14 +131,16 @@ const ReponsiveFilter = (props) => {
                           {props.title}
                         </Dialog.Title>
                         <div className="ml-3 flex h-7 items-center">
-                          <button
+                          <Button
                             type="button"
-                            className="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
+                            rounded
+                            size="tiny"
+                            variant="tertiary"
                             onClick={() => setOpen(false)}
+                            icon={<XIcon aria-hidden="true" />}
                           >
                             <span className="sr-only">Close panel</span>
-                            <XIcon className="h-6 w-6" aria-hidden="true" />
-                          </button>
+                          </Button>
                         </div>
                       </div>
                     </div>

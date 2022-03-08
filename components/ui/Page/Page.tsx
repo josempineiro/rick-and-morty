@@ -30,7 +30,7 @@ const Page = ({ title, children, breadcrumbs }: PageProps) => {
         </button>
         <div className="flex-1 flex justify-between">
           <nav
-            className="flex items-center px-4 py-3 sm:px-6 lg:px-8 xl:hidden text-2xl font-semibold text-gray-900"
+            className="flex items-center px-4 py-3 sm:px-6 lg:px-8 text-2xl font-semibold text-gray-900"
             aria-label="Breadcrumb"
           >
             {breadcrumbs &&

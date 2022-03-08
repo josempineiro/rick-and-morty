@@ -1,0 +1,87 @@
+.button {
+  @apply inline-flex items-center border border-transparent text-xs font-medium rounded-md;
+}
+
+.primary {
+  @apply shadow-sm text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500;
+}
+.secondary {
+  @apply text-cyan-700 bg-cyan-100 hover:bg-cyan-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500;
+}
+.tertiary {
+  @apply border border-gray-300 text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500;
+}
+
+.rounded {
+  @apply rounded-full;
+}
+
+.tiny {
+  @apply px-2.5 py-1.5 text-xs font-medium;
+  .icon {
+    @apply h-5 w-5;
+  }
+  &.rounded {
+    @apply p-2;
+  }
+}
+.small {
+  @apply px-3 py-2 text-sm leading-4 font-medium;
+  .iconLeft {
+    @apply -ml-0.5 mr-2 h-4 w-4;
+  }
+  .icon {
+    @apply h-5 w-5;
+  }
+  &.rounded {
+    @apply p-2.5;
+  }
+}
+.medium {
+  @apply px-4 py-2 text-sm font-medium;
+  .iconLeft {
+    @apply -ml-1 mr-2 h-5 w-5;
+  }
+  .icon {
+    @apply h-5 w-5;
+  }
+  &.rounded {
+    @apply p-3;
+  }
+}
+.large {
+  @apply px-4 py-2 text-base font-medium;
+  .iconLeft {
+    @apply ml-3 -mr-1 h-5 w-5;
+  }
+  .icon {
+    @apply h-6 w-6;
+  }
+  &.rounded {
+    @apply p-3;
+  }
+}
+.huge {
+  @apply px-6 py-3 text-base font-medium;
+  .iconLeft {
+    @apply ml-3 -mr-1 h-5 w-5;
+  }
+  .icon {
+    @apply h-6 w-6;
+  }
+  &.rounded {
+    @apply p-4;
+  }
+}
+
+.iconButton {
+  &.tiny {
+    @apply p-1;
+  }
+  &.small {
+    @apply p-1.5;
+  }
+  &.medium {
+    @apply p-2;
+  }
+}

@@ -35,7 +35,6 @@ const EpisodesPage = (props) => {
   }
   return (
     <Page title="Episodes">
-      <Pagination pageInfo={pageInfo} onNavigate={handleNavigate} />
       {loading && <Loader variant="linear" />}
       <EpisodesList loading={loading} episodes={episodes} />
       <Pagination pageInfo={pageInfo} onNavigate={handleNavigate} />
