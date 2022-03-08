@@ -28,9 +28,9 @@ const Page = ({ title, children, breadcrumbs }: PageProps) => {
           <span className="sr-only">Open sidebar</span>
           <MenuAlt2Icon className="h-6 w-6" aria-hidden="true" />
         </button>
-        <div className="flex-1 flex justify-between">
+        <div className="flex-1 flex justify-between overflow-hidden">
           <nav
-            className="flex items-center px-4 py-3 sm:px-6 lg:px-8 text-2xl font-semibold text-gray-900"
+            className="flex items-center px-4 py-3 sm:px-6 lg:px-8 lg:px-8 text-lg sm:text-2xl font-semibold text-gray-900 overflow-hidden"
             aria-label="Breadcrumb"
           >
             {breadcrumbs &&
@@ -50,7 +50,7 @@ const Page = ({ title, children, breadcrumbs }: PageProps) => {
                 </>
               ))}
 
-            <h1 className="">{title}</h1>
+            <h1 className="truncate">{title}</h1>
           </nav>
         </div>
       </div>

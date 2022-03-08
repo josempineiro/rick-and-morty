@@ -1,16 +1,13 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
+import { useRouter } from "next/router";
+
 import {
-  CodeIcon,
   FolderIcon,
   LocationMarkerIcon,
-  MenuAlt2Icon,
   UsersIcon,
   XIcon,
 } from "@heroicons/react/outline";
-import { SearchIcon } from "@heroicons/react/solid";
-import Head from "next/head";
-import Image from "next/image";
 import styles from "./Layout.module.css";
 import NavLink from "./NavLink";
 import LayoutContext from "./Layout.context";
@@ -34,6 +31,12 @@ export default function Layout({ children }: LayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const openSidebar = () => setSidebarOpen(true);
   const closeSidebar = () => setSidebarOpen(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    router.events.on("routeChangeComplete", closeSidebar);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <LayoutContext.Provider value={{ openSidebar, closeSidebar, sidebarOpen }}>
