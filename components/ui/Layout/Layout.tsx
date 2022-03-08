@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import {
   FolderIcon,
   LocationMarkerIcon,
+  SparklesIcon,
   UsersIcon,
   XIcon,
 } from "@heroicons/react/outline";
@@ -18,6 +19,7 @@ interface LayoutProps {
 }
 
 const navigation = [
+  { text: "Game", href: "/game", icon: SparklesIcon },
   { text: "Characters", href: "/characters", icon: UsersIcon },
   {
     text: "Locations",

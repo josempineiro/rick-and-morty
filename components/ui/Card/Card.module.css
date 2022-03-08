@@ -1,0 +1,23 @@
+.enter,
+.leave {
+  @apply transform transition duration-500;
+}
+
+.enterFrom {
+  transform: rotateY(180deg);
+  @apply opacity-0;
+}
+.enterTo {
+  transform: rotateY(0deg);
+  @apply opacity-100;
+}
+
+.leaveFrom {
+  transform: rotateY(0deg);
+  @apply opacity-100;
+}
+
+.leaveTo {
+  transform: rotateY(180deg);
+  @apply opacity-0;
+}
