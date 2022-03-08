@@ -9,6 +9,7 @@ import FilterField from "./FilterField";
 
 interface Filter {
   name: string;
+  className: string;
 }
 
 type SubmitFunction = ((
@@ -63,14 +64,17 @@ const Filter = ({
           onSubmit={props.handleSubmit}
           className={classNames(
             className,
-            "space-y-4 md:flex md:space-x-4 md:space-y-0 md:py-3"
+            "space-y-4 md:flex md:space-x-4 md:space-y-0 md:my-3"
           )}
         >
           {filters.map((filter) => (
             <FilterField
               key={filter.name}
               {...filter}
-              className="space-y-4 md:flex md:space-x-4 md:space-y-0 md:flex-1"
+              className={classNames(
+                filter.className,
+                "space-y-4 md:flex md:space-x-4 md:space-y-0 md:flex-1"
+              )}
             />
           ))}
           {submitOnChange && <AutoSubmit />}
@@ -88,7 +92,7 @@ const Filter = ({
   );
 };
 
-const ReponsiveFilter = (props) => {
+export const ReponsiveFilter = (props) => {
   const [open, setOpen] = useState(false);
   const handleSubmit = (...args) => {
     setOpen(false);
@@ -163,4 +167,4 @@ const ReponsiveFilter = (props) => {
   );
 };
 
-export default ReponsiveFilter;
+export default Filter;

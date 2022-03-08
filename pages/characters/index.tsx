@@ -47,7 +47,6 @@ const CharactersPage = (props) => {
       { shallow: true }
     );
   }
-  const debounceHandleFilter = _.debounce(handleFilter, 500);
   return (
     <Page title="Characters">
       {loading && <Loader variant="linear" />}

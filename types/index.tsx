@@ -9,6 +9,7 @@ export interface Episode {
   episode: string;
   created: string;
   characters: Character[];
+  season: string;
 }
 export interface Character {
   id: string;

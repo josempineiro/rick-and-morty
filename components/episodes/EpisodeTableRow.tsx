@@ -1,8 +1,9 @@
-import React from 'react'
-import { Episode } from 'types'
-import Link from 'next/link'
+import React from "react";
+import { Episode } from "types";
+import Link from "next/link";
+import { DocumentSearchIcon } from "@heroicons/react/outline";
 interface CharacterTableRowProps {
-  row: Episode
+  row: Episode;
 }
 
 const EpisodeTableRow = ({ row: episode }: CharacterTableRowProps) => {
@@ -12,7 +13,7 @@ const EpisodeTableRow = ({ row: episode }: CharacterTableRowProps) => {
         <div className="text-sm text-gray-900">{episode.name}</div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
-        <div className="text-sm text-gray-500">{episode.episode}</div>
+        <div className="text-sm text-gray-500">{episode.season}</div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
         <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
@@ -24,13 +25,15 @@ const EpisodeTableRow = ({ row: episode }: CharacterTableRowProps) => {
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
         <Link href={`/episodes/${episode.id}`}>
-          <a className="text-cyan-600 hover:text-cyan-900">Details</a>
+          <a className="text-cyan-600 hover:text-cyan-900">
+            <DocumentSearchIcon className="w-6 h-6" />
+          </a>
         </Link>
       </td>
     </tr>
-  )
-}
+  );
+};
 
-EpisodeTableRow.displayName = 'EpisodeTableRow'
+EpisodeTableRow.displayName = "EpisodeTableRow";
 
-export default EpisodeTableRow
+export default EpisodeTableRow;
