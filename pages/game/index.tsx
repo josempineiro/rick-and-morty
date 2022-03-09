@@ -20,6 +20,8 @@ const randomIds = (total) => {
 
 const MemorizeGame = (props: Props) => {
   const [ids] = useState(randomIds(12));
+  const [time, setTime] = useState(0);
+  const [timeInterval, setTimeInterval] = useState(undefined);
   const [cards, setCards] = useState([]);
   const [steps, setSteps] = useState(0);
   const { data, loading } = useCharactersByIds({
@@ -47,6 +49,16 @@ const MemorizeGame = (props: Props) => {
       }
     }
   };
+  useEffect(() => {
+    if (selected && !timeInterval) {
+      const startTime = new Date().getTime();
+      setTime(0);
+      const interval = setInterval(() => {
+        setTime(Math.round((new Date().getTime() - startTime) / 1000));
+      }, 1000);
+      setTimeInterval(interval);
+    }
+  }, [selected, timeInterval]);
 
   useEffect(() => {
     if (selected !== undefined && compare !== undefined) {
@@ -60,6 +72,12 @@ const MemorizeGame = (props: Props) => {
       }, 400);
     }
   }, [selected, compare]);
+
+  useEffect(() => {
+    if (resolved.length === cards.length) {
+      clearInterval(timeInterval);
+    }
+  });
 
   const isVisible = (character) => {
     if (
@@ -83,7 +101,8 @@ const MemorizeGame = (props: Props) => {
   return (
     <div className="md:pl-64 flex flex-col h-screen">
       <div className="w-full p-2 sm:p-10">
-        <div className="text-4xl my-4 text-center">{steps}</div>
+        <div className="text-4xl my-4 text-center">{time} seconds</div>
+        <div className="text-4xl my-4 text-center">{steps} movements</div>
         <div className="text-4xl my-4 text-center">
           {resolved.length / 2} / {cards.length / 2}
         </div>
