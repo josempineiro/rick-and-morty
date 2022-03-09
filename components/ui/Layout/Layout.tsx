@@ -130,6 +130,7 @@ export default function Layout({ children }: LayoutProps) {
 
       {children}
       <div id="Popovers" className={styles.Popover} />
+      <div className={styles.signature}>Leman.dev</div>
     </LayoutContext.Provider>
   );
 }
