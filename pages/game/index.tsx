@@ -1,9 +1,11 @@
 import { Fragment, useEffect, useState } from "react";
 import _ from "lodash";
 import { Transition } from "@headlessui/react";
+import { SwitchHorizontalIcon, ClockIcon } from "@heroicons/react/outline";
 import { useCharactersByIds } from "graphql/hooks";
 import classNames from "classnames";
 import styles from "components/ui/Card/Card.module.css";
+import Page from "components/ui/Page";
 
 type Props = {};
 
@@ -99,12 +101,22 @@ const MemorizeGame = (props: Props) => {
   }
 
   return (
-    <div className="md:pl-64 flex flex-col h-screen">
+    <Page title={"Rick and Morty memo game"}>
       <div className="w-full p-2 sm:p-10">
-        <div className="text-4xl my-4 text-center">{time} seconds</div>
-        <div className="text-4xl my-4 text-center">{steps} movements</div>
-        <div className="text-4xl my-4 text-center">
-          {resolved.length / 2} / {cards.length / 2}
+        <div className="flex justify-around gap-8 mb-4">
+          <div className="flex flex-1 items-center justify-center flex-col rounded-lg shadow-lg bg-white py-2 px-4">
+            <ClockIcon className="h-6 w-6" />
+            <span className="text-2xl text-center">{time}</span>
+          </div>
+          <div className="flex flex-1 items-center justify-center flex-col rounded-lg shadow-lg bg-white py-2 px-4">
+            <span className="text-2xl text-center">
+              {resolved.length / 2} / {cards.length / 2}
+            </span>
+          </div>
+          <div className="flex flex-1 items-center justify-center flex-col rounded-lg shadow-lg bg-white py-2 px-4">
+            <SwitchHorizontalIcon className="h-6 w-6" />
+            <span className="text-2xl text-center">{steps}</span>
+          </div>
         </div>
         <div className="grid grid-cols-4 md:grid-cols-6 gap-2 max-w-3xl my-0 mx-auto">
           {cards.map((character, index) => {
@@ -161,7 +173,7 @@ const MemorizeGame = (props: Props) => {
           })}
         </div>
       </div>
-    </div>
+    </Page>
   );
 };
 
