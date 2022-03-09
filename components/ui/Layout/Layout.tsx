@@ -3,6 +3,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { useRouter } from "next/router";
 
 import {
+  ChatIcon,
   FolderIcon,
   LocationMarkerIcon,
   SparklesIcon,
@@ -27,6 +28,7 @@ const navigation = [
     icon: LocationMarkerIcon,
   },
   { text: "Episodes", href: "/episodes", icon: FolderIcon },
+  { text: "Quotes", href: "/quotes", icon: ChatIcon },
 ];
 
 export default function Layout({ children }: LayoutProps) {
