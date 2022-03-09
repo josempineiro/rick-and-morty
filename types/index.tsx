@@ -53,3 +53,9 @@ export interface FieldProps {
   options?: Option[];
   className?: string;
 }
+
+export interface Quote {
+  id: string;
+  quote: string;
+  character: Character;
+}

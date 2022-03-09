@@ -4,21 +4,26 @@ import Loader from "components/ui/Loader";
 import Page from "components/ui/Page";
 import Quote from "components/quotes/Quote";
 
-const QuotesPage = () => {
+const QuotePage = () => {
+  const {
+    query: { id },
+  } = useRouter();
   const [quote, setQuote] = useState(undefined);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(undefined);
 
   useEffect(() => {
-    // GET request using fetch inside useEffect React hook
-    fetch("/api/quotes")
+    setError(undefined);
+    setLoading(true);
+    fetch(`/api/quotes/${id}`)
       .then((response) => response.json())
-      .then(setQuote)
+      .then((data) => {
+        setQuote(data);
+        return data;
+      })
       .catch(setError)
       .finally(() => setLoading(false));
-
-    // empty dependency array means this effect will only run once (like componentDidMount in classes)
-  }, []);
+  }, [id]);
 
   if (loading) {
     return <Loader variant="linear" />;
@@ -32,4 +37,4 @@ const QuotesPage = () => {
   );
 };
 
-export default QuotesPage;
+export default QuotePage;
