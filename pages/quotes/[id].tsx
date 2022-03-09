@@ -13,16 +13,18 @@ const QuotePage = () => {
   const [error, setError] = useState(undefined);
 
   useEffect(() => {
-    setError(undefined);
-    setLoading(true);
-    fetch(`/api/quotes/${id}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setQuote(data);
-        return data;
-      })
-      .catch(setError)
-      .finally(() => setLoading(false));
+    if (id) {
+      setError(undefined);
+      setLoading(true);
+      fetch(`/api/quotes/${id}`)
+        .then((response) => response.json())
+        .then((data) => {
+          setQuote(data);
+          return data;
+        })
+        .catch(setError)
+        .finally(() => setLoading(false));
+    }
   }, [id]);
 
   if (loading) {
