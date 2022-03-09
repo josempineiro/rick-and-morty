@@ -6,7 +6,7 @@ import {
   ChatIcon,
   FolderIcon,
   LocationMarkerIcon,
-  SparklesIcon,
+  StarIcon,
   UsersIcon,
   XIcon,
 } from "@heroicons/react/outline";
@@ -20,7 +20,7 @@ interface LayoutProps {
 }
 
 const navigation = [
-  { text: "Game", href: "/game", icon: SparklesIcon },
+  { text: "Game", href: "/game", icon: StarIcon },
   { text: "Characters", href: "/characters", icon: UsersIcon },
   {
     text: "Locations",
