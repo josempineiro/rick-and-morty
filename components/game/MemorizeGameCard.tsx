@@ -62,7 +62,7 @@ const MemorizeGameCard = ({
           onDragStart={(event) => {
             event.preventDefault();
           }}
-          src={"/card.jpeg"}
+          src={"/card.png"}
           className={classNames(
             "object-cover w-full h-full object-center  group-hover:opacity-75 user-select-none"
           )}
