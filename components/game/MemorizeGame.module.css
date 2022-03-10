@@ -1,0 +1,25 @@
+.root {
+  @apply w-full p-2 sm:p-10;
+}
+
+.board {
+  @apply grid max-w-3xl my-0 mx-auto;
+}
+
+.easy {
+  .board {
+    @apply grid-cols-4 md:grid-cols-6 gap-1;
+  }
+}
+
+.medium {
+  .board {
+    @apply grid-cols-6 md:grid-cols-8 gap-2;
+  }
+}
+
+.hard {
+  .board {
+    @apply grid-cols-8 md:grid-cols-8 gap-1;
+  }
+}
