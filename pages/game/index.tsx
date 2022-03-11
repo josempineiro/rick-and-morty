@@ -12,6 +12,8 @@ import {
   ReplyIcon,
   ExclamationIcon,
   CheckIcon,
+  ClockIcon,
+  SwitchHorizontalIcon,
 } from "@heroicons/react/outline";
 
 type Props = {};
@@ -28,39 +30,41 @@ const randomIds = (total) => {
 };
 
 const MemorizeGamePage = (props: Props) => {
-  const [ids] = useState(randomIds(48));
+  const [ids, setIds] = useState(randomIds(48));
   const [level, setLevel] = useState();
   const [wantFinishGame, setWantFinishGame] = useState(false);
-  const [finishedGame, setFinishedGame] = useState(false);
+  const [finishedGame, setFinishedGame] = useState(undefined);
 
   const { data, loading } = useCharactersByIds({
+    skip: !level,
     variables: {
       ids: ids,
     },
   });
 
   function handleChangeLevel({ value }) {
+    setIds(randomIds(48));
     setLevel(value);
   }
 
   function handleRetryGame() {
     setWantFinishGame(true);
   }
-  function handleFinishGame() {
-    setFinishedGame(true);
+  function handleFinishGame(game) {
+    setFinishedGame(game);
   }
   function handleAbortGame() {
-    setFinishedGame(false);
+    setFinishedGame(undefined);
     setLevel(undefined);
     setWantFinishGame(false);
   }
   function handleContinueGame() {
     setWantFinishGame(false);
-    setFinishedGame(false);
+    setFinishedGame(undefined);
   }
   function handleCancelGame() {
     setWantFinishGame(false);
-    setFinishedGame(false);
+    setFinishedGame(undefined);
     setLevel(undefined);
   }
 
@@ -107,7 +111,7 @@ const MemorizeGamePage = (props: Props) => {
       />
 
       <Dialog
-        visible={finishedGame}
+        visible={Boolean(finishedGame)}
         onClose={handleCancelGame}
         icon={
           <div className="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-green-100 sm:mx-0 sm:h-10 sm:w-10">
@@ -116,6 +120,31 @@ const MemorizeGamePage = (props: Props) => {
         }
         title={"Great!"}
         message={"Try again and see if you can do better!"}
+        content={
+          <div className="flex justify-around gap-8 mb-4 max-w-xs mx-auto px-4">
+            <div className="relative flex flex-1 items-center justify-center flex-col rounded-lg shadow-lg bg-white py-2 px-4">
+              <span className="absolute top-0 left-0 -translate-y-1/2 -translate-x-1/2 p-1 rounded-full bg-white shadow-lg">
+                <ClockIcon className=" h-4 w-4 text-gray-500 " />
+              </span>
+              <span className="text-2xl text-center text-cyan-600">
+                {finishedGame?.time}
+              </span>
+            </div>
+            <div className="relative flex flex-1 items-center justify-center flex-col rounded-lg shadow-lg bg-white py-2 px-4">
+              <span className="text-2xl text-center whitespace-pre text-cyan-600">
+                {finishedGame?.cards} / {finishedGame?.cards}
+              </span>
+            </div>
+            <div className="relative flex flex-1 items-center justify-center flex-col rounded-lg shadow-lg bg-white py-2 px-4">
+              <span className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 p-1 rounded-full bg-white shadow-lg">
+                <SwitchHorizontalIcon className="h-4 w-4 text-gray-500" />
+              </span>
+              <span className="text-2xl text-center text-cyan-600">
+                {finishedGame?.steps}
+              </span>
+            </div>
+          </div>
+        }
         accept={{
           variant: "primary",
           onClick: handleAbortGame,

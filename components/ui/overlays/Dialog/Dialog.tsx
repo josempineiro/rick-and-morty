@@ -6,11 +6,20 @@ interface Dialog extends ModalProps {
   title?: string;
   message?: string;
   icon?: React.ReactNode;
+  content?: React.ReactNode;
   accept?: ButtonProps;
   cancel?: ButtonProps;
 }
 
-function Dialog({ icon, title, message, cancel, accept, ...props }: Dialog) {
+function Dialog({
+  icon,
+  title,
+  message,
+  content,
+  cancel,
+  accept,
+  ...props
+}: Dialog) {
   return (
     <Modal {...props}>
       <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
@@ -33,6 +42,7 @@ function Dialog({ icon, title, message, cancel, accept, ...props }: Dialog) {
           </div>
         </div>
       </div>
+      {content}
       <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
         <Button
           type="button"

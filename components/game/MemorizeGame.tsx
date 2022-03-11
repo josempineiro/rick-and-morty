@@ -52,10 +52,14 @@ const MemorizeGame = ({ items, level, onFinishGame }: MemorizeGameProps) => {
 
   const handleClick = (character) => {
     if (!isVisible(character)) {
-      if (selected === undefined) {
+      if (selected === undefined && compare === undefined) {
         setSelected(character);
       } else if (compare === undefined) {
         setCompare(character);
+        setSteps((steps) => steps + 1);
+        if (selected.id === character.id) {
+          setResolved((resolved) => [...resolved, selected, character]);
+        }
       }
     }
   };
@@ -73,21 +77,25 @@ const MemorizeGame = ({ items, level, onFinishGame }: MemorizeGameProps) => {
 
   useEffect(() => {
     if (selected !== undefined && compare !== undefined) {
-      if (selected.id === compare.id) {
-        setResolved((resolved) => [...resolved, selected, compare]);
-      }
       setTimeout(() => {
         setSelected(undefined);
-        setCompare(undefined);
-        setSteps((steps) => steps + 1);
-      }, 400);
+        setTimeout(() => {
+          setCompare(undefined);
+        }, 300);
+      }, 300);
     }
   }, [selected, compare]);
 
   useEffect(() => {
     if (resolved.length === cards.length) {
       clearInterval(timeInterval);
-      onFinishGame();
+      setTimeout(() => {
+        onFinishGame({
+          steps,
+          time,
+          cards: cards.length / 2,
+        });
+      }, 1000);
     }
   });
 
