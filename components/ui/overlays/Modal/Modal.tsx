@@ -4,7 +4,7 @@ import { Dialog, Transition } from "@headlessui/react";
 export type ModalProps = {
   visible?: boolean;
   onClose?: Function;
-  children: React.ReactNode | React.ReactNode[] | Element[];
+  children?: React.ReactNode | React.ReactNode[] | Element[];
 };
 
 function Modal({ visible, onClose, children }: ModalProps) {

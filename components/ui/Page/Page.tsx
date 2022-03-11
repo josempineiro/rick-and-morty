@@ -12,7 +12,7 @@ interface Breadcrumb {
 type PageProps = {
   children: React.ReactNode;
   title: string;
-  actions: React.ReactNode | React.ReactNode[] | Element;
+  actions?: React.ReactNode | React.ReactNode[] | Element;
   breadcrumbs?: Breadcrumb[];
 };
 

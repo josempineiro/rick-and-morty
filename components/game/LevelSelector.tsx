@@ -42,7 +42,7 @@ function LevelSelector({ value, onChange }: LevelSelectorProps) {
       <div className="mt-1 bg-white rounded-md shadow-sm -space-y-px">
         {settings.map((setting, settingIdx) => (
           <RadioGroup.Option
-            key={setting.name}
+            key={setting.value}
             value={setting}
             className={({ checked }) =>
               classNames(
