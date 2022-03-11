@@ -44,6 +44,8 @@ export interface Option {
 }
 
 export interface FieldProps {
+  value?: any;
+  onChange?: (value: any) => void;
   variant: string;
   label: string;
   hint?: string;

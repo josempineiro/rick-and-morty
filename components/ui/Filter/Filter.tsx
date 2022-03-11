@@ -104,7 +104,7 @@ export const ReponsiveFilter = (props) => {
         <Button
           onClick={() => setOpen(true)}
           type="button"
-          variant="tertiary"
+          variant="clear"
           icon={<FilterIcon />}
         />
       </div>
@@ -139,7 +139,7 @@ export const ReponsiveFilter = (props) => {
                             type="button"
                             rounded
                             size="tiny"
-                            variant="tertiary"
+                            variant="clear"
                             onClick={() => setOpen(false)}
                             icon={<XIcon aria-hidden="true" />}
                           >

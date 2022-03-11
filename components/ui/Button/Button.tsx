@@ -10,7 +10,7 @@ export interface ButtonProps
   className?: string;
   rounded?: boolean;
   size?: "tiny" | "small" | "medium" | "large" | "huge";
-  variant?: "primary" | "secondary" | "tertiary";
+  variant?: "primary" | "secondary" | "clear" | "danger" | "tertiary";
   children?: React.ReactNode;
   icon?: React.ReactElement<any, string | React.JSXElementConstructor<any>>;
   leftIcon?: React.ReactElement<any, string | React.JSXElementConstructor<any>>;

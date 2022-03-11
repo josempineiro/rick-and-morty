@@ -12,10 +12,11 @@ interface Breadcrumb {
 type PageProps = {
   children: React.ReactNode;
   title: string;
+  actions: React.ReactNode | React.ReactNode[] | Element;
   breadcrumbs?: Breadcrumb[];
 };
 
-const Page = ({ title, children, breadcrumbs }: PageProps) => {
+const Page = ({ title, children, breadcrumbs, actions }: PageProps) => {
   const { openSidebar } = useLayoutContext();
   return (
     <div className="md:pl-64 flex flex-col h-full">
@@ -52,6 +53,7 @@ const Page = ({ title, children, breadcrumbs }: PageProps) => {
 
             <h1 className="truncate">{title}</h1>
           </nav>
+          <div className="flex items-center px-4">{actions}</div>
         </div>
       </div>
 

@@ -15,12 +15,15 @@ type Item = {
 
 type MemorizeGameProps = {
   items: Item[];
-  level: "easy" | "medium" | "hard";
+  level: "easy" | "medium" | "hard" | "test";
+  onFinishGame: Function;
 };
 
-const MemorizeGame = ({ items, level }: MemorizeGameProps) => {
+const MemorizeGame = ({ items, level, onFinishGame }: MemorizeGameProps) => {
   const numItems = (() => {
     switch (level) {
+      case "test":
+        return 1;
       case "easy":
         return 12;
       case "medium":
@@ -84,6 +87,7 @@ const MemorizeGame = ({ items, level }: MemorizeGameProps) => {
   useEffect(() => {
     if (resolved.length === cards.length) {
       clearInterval(timeInterval);
+      onFinishGame();
     }
   });
 
@@ -140,6 +144,7 @@ const MemorizeGame = ({ items, level }: MemorizeGameProps) => {
 };
 
 MemorizeGame.levels = {
+  test: "test",
   easy: "easy",
   medium: "medium",
   hard: "hard",
