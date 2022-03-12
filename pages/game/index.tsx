@@ -1,4 +1,4 @@
-import { useState, Fragment } from "react";
+import { useState, useRef, Fragment } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useCharactersByIds } from "graphql/hooks";
@@ -56,7 +56,16 @@ const MemorizeGamePage = (props: Props) => {
   function handleRetryGame() {
     setWantFinishGame(true);
   }
+
+  const wooVuAudio = useRef();
+  const youWinAudio = useRef();
   function handleFinishGame(game) {
+    if (Math.random() > 0.5) {
+      wooVuAudio.current.play();
+    } else {
+      youWinAudio.current.play();
+    }
+    debugger;
     setFinishedGame(game);
   }
   function handleAbortGame() {
@@ -144,6 +153,12 @@ const MemorizeGamePage = (props: Props) => {
             }}
           />
 
+          <audio ref={wooVuAudio}>
+            <source src="/audio/woo_vu_luvub_dub_dub.wav" type="audio/wav" />
+          </audio>
+          <audio ref={youWinAudio}>
+            <source src="/audio/you-win.mp3" type="audio/wav" />
+          </audio>
           <Dialog
             visible={Boolean(finishedGame)}
             onClose={handleCancelGame}
