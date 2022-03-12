@@ -80,7 +80,7 @@ const MemorizeGamePage = (props: Props) => {
 
   return (
     <div className="flex flex-col h-full overflow-auto">
-      <div className="sticky top-0 z-10 flex-shrink-0 flex h-16 bg-white shadow">
+      <div className="sticky top-0 z-10 flex-shrink-0 flex h-12 sm:h-16 bg-white shadow">
         <div className="max-w-7xl mx-auto flex w-full justify-between items-center">
           <Link href="/" passHref={false}>
             <Button

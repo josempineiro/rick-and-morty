@@ -19,17 +19,17 @@ const Page = ({ title, children, breadcrumbs }: PageProps) => {
   const { openSidebar } = useLayoutContext();
   return (
     <div className="md:pl-64 flex flex-col h-full overflow-auto">
-      <div className="sticky top-0 z-10 flex-shrink-0 flex h-16 bg-white shadow">
+      <div className="sticky top-0 z-10 flex-shrink-0 flex h-12 sm:h-16 bg-white shadow">
         <button
           type="button"
-          className="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-500 md:hidden"
+          className="px-3 sm:px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-500 md:hidden"
           onClick={openSidebar}
         >
           <span className="sr-only">Open sidebar</span>
           <MenuAlt2Icon className="h-6 w-6" aria-hidden="true" />
         </button>
         <div className="flex-1 flex items-center py-4 px-8 justify-between overflow-hidden">
-          <h1 className="text-2xl truncate">{title}</h1>
+          <h1 className="text-lg sm:text-2xl truncate">{title}</h1>
         </div>
       </div>
 
