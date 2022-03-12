@@ -1,0 +1,3 @@
+.page {
+  @apply md:pl-64 flex flex-col h-full;
+}

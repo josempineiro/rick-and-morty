@@ -19,7 +19,10 @@ const EpisodePage = (props) => {
   return (
     <Page
       title={episode.name}
-      breadcrumbs={[{ id: "episodes", href: "/episodes", text: "Episodes" }]}
+      breadcrumbs={[
+        { id: "home", href: "/", text: "Home" },
+        { id: "episodes", href: "/episodes", text: "Episodes" },
+      ]}
     >
       <EpisodeDetails episode={episode} />
     </Page>

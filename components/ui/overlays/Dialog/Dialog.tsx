@@ -44,13 +44,15 @@ function Dialog({
       </div>
       {content}
       <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-        <Button
-          type="button"
-          {...accept}
-          className="w-full sm:ml-3 sm:w-auto sm:text-sm"
-        >
-          {accept.children || "Accept"}
-        </Button>
+        {accept && (
+          <Button
+            type="button"
+            {...accept}
+            className="w-full sm:ml-3 sm:w-auto sm:text-sm"
+          >
+            {accept.children || "Accept"}
+          </Button>
+        )}
         {cancel && (
           <Button
             type="button"

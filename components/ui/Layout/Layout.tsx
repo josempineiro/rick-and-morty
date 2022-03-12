@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import {
   ChatIcon,
   FolderIcon,
+  HomeIcon,
   LocationMarkerIcon,
   StarIcon,
   UsersIcon,
@@ -20,6 +21,7 @@ interface LayoutProps {
 }
 
 const navigation = [
+  { text: "Home", href: "/", icon: HomeIcon },
   { text: "Game", href: "/game", icon: StarIcon },
   { text: "Characters", href: "/characters", icon: UsersIcon },
   {
@@ -132,7 +134,6 @@ export default function Layout({ children }: LayoutProps) {
 
       {children}
       <div id="Popovers" className={styles.Popover} />
-      <div className={styles.signature}>Leman.dev</div>
     </LayoutContext.Provider>
   );
 }

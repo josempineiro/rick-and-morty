@@ -19,7 +19,10 @@ const LocationPage = (props) => {
   return (
     <Page
       title={location.name}
-      breadcrumbs={[{ id: "locations", href: "/locations", text: "Locations" }]}
+      breadcrumbs={[
+        { id: "home", href: "/", text: "Home" },
+        { id: "locations", href: "/locations", text: "Locations" },
+      ]}
     >
       <LocationDetails location={location} />
     </Page>

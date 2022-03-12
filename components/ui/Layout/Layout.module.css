@@ -18,7 +18,3 @@
 .Popover > * {
   @apply pointer-events-auto;
 }
-
-.signature {
-  @apply fixed -z-10 bottom-0 right-0 px-2 sm:p-4 text-center font-semibold text-xl opacity-30;
-}

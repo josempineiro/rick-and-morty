@@ -20,6 +20,7 @@ const CharacterPage = (props) => {
     <Page
       title={character.name}
       breadcrumbs={[
+        { id: "home", href: "/", text: "Home" },
         { id: "characters", href: "/characters", text: "Characters" },
       ]}
     >

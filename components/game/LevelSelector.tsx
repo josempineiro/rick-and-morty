@@ -33,13 +33,7 @@ export interface LevelSelectorProps {
 function LevelSelector({ value, onChange }: LevelSelectorProps) {
   return (
     <RadioGroup value={value} onChange={onChange}>
-      <RadioGroup.Label className="text-sm font-medium text-gray-900">
-        Level
-      </RadioGroup.Label>
-      <p className="text-sm leading-5 text-gray-500 mb-4">
-        Select a level to start the game
-      </p>
-      <div className="mt-1 bg-white rounded-md shadow-sm -space-y-px">
+      <div className="bg-white rounded-md shadow-sm -space-y-px">
         {settings.map((setting, settingIdx) => (
           <RadioGroup.Option
             key={setting.value}

@@ -1,14 +1,27 @@
+import { Fragment } from "react";
+import { ReactNode } from "react";
+import { NextPage } from "next";
 import { ApolloProvider } from "@apollo/client";
 import Head from "next/head";
 import { AppProps } from "next/app";
 import Layout from "components/ui/Layout";
+import Signature from "components/ui/Signature";
 import client from "apollo/client";
 import "styles/globals.css";
 
-function App({ Component, pageProps }: AppProps) {
+type Page<P = {}> = NextPage<P> & {
+  Layout?: (page: ReactNode) => ReactNode;
+};
+
+type Props = AppProps & {
+  Component: Page;
+};
+
+function App({ Component, pageProps }: Props) {
+  const AppLayout = Component.Layout || Layout;
   return (
     <ApolloProvider client={client}>
-      <Layout>
+      <AppLayout>
         <Head>
           <title>Rick and Morty</title>
           <link
@@ -38,7 +51,8 @@ function App({ Component, pageProps }: AppProps) {
           <meta name="theme-color" content="#192d1a"></meta>
         </Head>
         <Component {...pageProps} />
-      </Layout>
+        <Signature />
+      </AppLayout>
     </ApolloProvider>
   );
 }
