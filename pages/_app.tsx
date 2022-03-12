@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import { ReactNode } from "react";
 import { NextPage } from "next";
 import { ApolloProvider } from "@apollo/client";
@@ -18,7 +17,7 @@ type Props = AppProps & {
 };
 
 function App({ Component, pageProps }: Props) {
-  const AppLayout = Component.Layout || Layout;
+  const AppLayout: any = Component.Layout || Layout;
   return (
     <ApolloProvider client={client}>
       <AppLayout>
