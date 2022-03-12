@@ -116,7 +116,7 @@ const MemorizeGame = ({ items, level, onFinishGame }: MemorizeGameProps) => {
 
   return (
     <div className={classNames(styles.root, { [styles[level]]: true })}>
-      <div className="flex justify-around gap-8 mb-4 max-w-xs mx-auto">
+      <div className={styles.stats}>
         <div className="relative flex flex-1 items-center justify-center flex-col rounded-lg shadow-lg bg-white py-2 px-4">
           <span className="absolute top-0 left-0 -translate-y-1/2 -translate-x-1/2 p-1 rounded-full bg-white shadow-lg">
             <ClockIcon className=" h-4 w-4 text-gray-500 " />

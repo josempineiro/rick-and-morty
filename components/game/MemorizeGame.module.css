@@ -1,9 +1,13 @@
 .root {
-  @apply w-full p-2 sm:p-10;
+  @apply w-full px-2 sm:px-4;
 }
 
 .board {
-  @apply grid max-w-3xl my-0 mx-auto;
+  @apply grid sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-6xl my-0 mx-auto;
+}
+
+.stats {
+  @apply flex justify-around gap-8 p-4 max-w-xs mx-auto;
 }
 
 .test {
@@ -26,6 +30,6 @@
 
 .hard {
   .board {
-    @apply grid-cols-8 md:grid-cols-8 gap-1;
+    @apply grid-cols-8 sm:grid-cols-10 md:grid-cols-12 gap-1;
   }
 }

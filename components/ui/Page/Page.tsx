@@ -18,7 +18,7 @@ type PageProps = {
 const Page = ({ title, children, breadcrumbs }: PageProps) => {
   const { openSidebar } = useLayoutContext();
   return (
-    <div className="md:pl-64 flex flex-col h-full">
+    <div className="md:pl-64 flex flex-col h-full overflow-auto">
       <div className="sticky top-0 z-10 flex-shrink-0 flex h-16 bg-white shadow">
         <button
           type="button"
