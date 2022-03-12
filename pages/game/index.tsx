@@ -57,8 +57,9 @@ const MemorizeGamePage = (props: Props) => {
     setWantFinishGame(true);
   }
 
-  const wooVuAudio = useRef();
-  const youWinAudio = useRef();
+  const wooVuAudio = useRef<HTMLAudioElement>();
+  const youWinAudio = useRef<HTMLAudioElement>();
+
   function handleFinishGame(game) {
     if (Math.random() > 0.5) {
       wooVuAudio.current.play();
@@ -157,7 +158,7 @@ const MemorizeGamePage = (props: Props) => {
             <source src="/audio/woo_vu_luvub_dub_dub.wav" type="audio/wav" />
           </audio>
           <audio ref={youWinAudio}>
-            <source src="/audio/you-win.mp3" type="audio/wav" />
+            <source src="/audio/you-win.mp3" type="audio/mp3" />
           </audio>
           <Dialog
             visible={Boolean(finishedGame)}

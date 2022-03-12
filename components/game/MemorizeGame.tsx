@@ -89,13 +89,16 @@ const MemorizeGame = ({ items, level, onFinishGame }: MemorizeGameProps) => {
   useEffect(() => {
     if (resolved.length === cards.length) {
       clearInterval(timeInterval);
-      setTimeout(() => {
+      const timeout = setTimeout(() => {
         onFinishGame({
           steps,
           time,
           cards: cards.length / 2,
         });
       }, 1000);
+      return () => {
+        clearTimeout(timeout);
+      };
     }
   });
 
