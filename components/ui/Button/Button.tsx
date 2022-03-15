@@ -21,26 +21,25 @@ export interface ButtonProps
   >;
 }
 
-function Button({
-  className,
-  size,
-  variant,
-  text,
-  icon,
-  leftIcon,
-  rightIcon,
-  children,
-  rounded,
-  type,
-  ...props
-}: ButtonProps) {
-  console.log({
-    [styles[size]]: true,
-    [styles[variant]]: true,
-    [styles.rounded]: Boolean(rounded),
-  });
+const Button = (
+  {
+    className,
+    size = "medium",
+    variant = "primary",
+    text,
+    icon,
+    leftIcon,
+    rightIcon,
+    children,
+    rounded,
+    type = "button",
+    ...props
+  }: ButtonProps,
+  ref: React.RefObject<HTMLButtonElement>
+) => {
   return (
     <button
+      ref={ref}
       className={classNames(className, styles.button, {
         [styles[size]]: true,
         [styles[variant]]: true,
@@ -56,12 +55,6 @@ function Button({
         React.cloneElement(rightIcon, { className: styles.rightIcon })}
     </button>
   );
-}
-
-Button.defaultProps = {
-  type: "button",
-  size: "medium",
-  variant: "primary",
 };
 
-export default Button;
+export default React.forwardRef(Button);

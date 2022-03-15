@@ -17,7 +17,6 @@ const Notifier = (props: NotifierProps) => {
   }
 
   function handleCloseNotification(notification) {
-    debugger;
     setNotifications((notifications) =>
       notifications.map((notificationItem) =>
         notificationItem.id === notification.id

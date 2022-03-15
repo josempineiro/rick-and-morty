@@ -1,0 +1,27 @@
+.wrapper {
+  @apply max-w-sm w-full bg-white shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden p-4 flex items-start;
+}
+
+.icon {
+  @apply flex-shrink-0;
+}
+
+.body {
+  @apply ml-3 w-0 flex-1 pt-0.5;
+}
+
+.footer {
+  @apply ml-4 flex-shrink-0 flex;
+}
+
+.title {
+  @apply text-sm font-medium text-gray-900;
+}
+
+.message {
+  @apply mt-1 text-sm text-gray-500;
+}
+
+.actions {
+  @apply mt-3 flex space-x-7;
+}

@@ -103,9 +103,6 @@ const MemorizeGamePage = (props: Props) => {
   function handleAbortGame() {
     Notifier.notify({
       id: "GameFinished",
-      title: "Congrats!",
-      message: "You win!",
-      type: "success",
       audio: getRandomAbortAudios(),
     });
     setFinishedGame(undefined);
@@ -159,7 +156,7 @@ const MemorizeGamePage = (props: Props) => {
             cancel={{
               variant: "danger",
               onClick: handleExitGame,
-              children: "Exit",
+              children: "Cancel",
             }}
             title={"Select level"}
             message={"Select a level to start the game"}
