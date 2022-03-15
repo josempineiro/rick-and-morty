@@ -24,6 +24,21 @@ function App({ Component, pageProps }: Props) {
       <AppLayout>
         <Head>
           <title>Rick and Morty</title>
+          <meta name="title" content="Funny Rick and Morty application" />
+          <meta
+            name="description"
+            content="Look up information on your favorite characters, check out episodes and locations, or play a fun memory game about them."
+          />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+          <meta name="msapplication-TileColor" content="#0891b2" />
+          <meta
+            name="msapplication-TileImage"
+            content="/icons/android-chrome-512x512.png"
+          />
+          <meta name="theme-color" content="#0891b2"></meta>
+          <link rel="manifest" href="/manifest.json" />
+
           <link
             rel="apple-touch-icon"
             sizes="180x180"
@@ -41,24 +56,10 @@ function App({ Component, pageProps }: Props) {
             sizes="16x16"
             href="/icons/favicon-16x16.png"
           />
-          <link rel="manifest" href="/site.webmanifest" />
           <link
             rel="mask-icon"
             href="/icons/safari-pinned-tab.svg"
             color="#5bbad5"
-          />
-          <meta name="msapplication-TileColor" content="#0891b2"></meta>
-          <meta name="theme-color" content="#0891b2"></meta>
-          <meta name="title" content="Funny Rick and Morty application" />
-          <meta
-            name="description"
-            content="Characters, episodes, locations, quotes and a memorize game of Rick and Morty"
-          />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <meta name="msapplication-TileColor" content="#0891b2" />
-          <meta
-            name="msapplication-TileImage"
-            content="/icons/android-chrome-512x512.png"
           />
           <meta name="theme-color" content="#0891b2" />
           <link rel="manifest" href="/site.webmanifest" />
@@ -68,10 +69,13 @@ function App({ Component, pageProps }: Props) {
           />
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://rick-and-morty.leman.dev/" />
-          <meta property="og:title" content="Rick and Morty" />
+          <meta
+            property="og:title"
+            content="Funny Rick and Morty application"
+          />
           <meta
             property="og:description"
-            content="Characters, episodes, locations, quotes and a memorize game of Rick and Morty"
+            content="Look up information on your favorite characters, check out episodes and locations, or play a fun memory game about them."
           />
           <meta
             property="og:image"
@@ -88,7 +92,7 @@ function App({ Component, pageProps }: Props) {
           />
           <meta
             property="twitter:description"
-            content="Characters, episodes, locations, quotes and a memorize game of Rick and Morty"
+            content="Look up information on your favorite characters, check out episodes and locations, or play a fun memory game about them."
           />
           <meta
             property="twitter:image"
