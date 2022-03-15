@@ -87,9 +87,6 @@ const MemorizeGamePage = (props: Props) => {
     setWantFinishGame(true);
   }
 
-  const wooVuAudio = useRef<HTMLAudioElement>();
-  const youWinAudio = useRef<HTMLAudioElement>();
-
   function handleFinishGame(game) {
     Notifier.notify({
       id: "GameFinished",
@@ -189,13 +186,6 @@ const MemorizeGamePage = (props: Props) => {
               onClick: handleContinueGame,
             }}
           />
-
-          <audio ref={wooVuAudio}>
-            <source src="/audio/woo_vu_luvub_dub_dub.wav" type="audio/wav" />
-          </audio>
-          <audio ref={youWinAudio}>
-            <source src="/audio/you-win.mp3" type="audio/mp3" />
-          </audio>
           <Dialog
             visible={Boolean(finishedGame)}
             onClose={handleCancelGame}
