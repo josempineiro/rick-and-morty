@@ -49,8 +49,11 @@ function App({ Component, pageProps }: Props) {
           />
           <meta name="msapplication-TileColor" content="#0891b2"></meta>
           <meta name="theme-color" content="#0891b2"></meta>
-          <meta name="title" content="Rick and Morty" />
-          <meta name="description" content="Funny Rick and Morty application" />
+          <meta name="title" content="Funny Rick and Morty application" />
+          <meta
+            name="description"
+            content="Characters, episodes, locations, quotes and a memorize game of Rick and Morty"
+          />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="msapplication-TileColor" content="#0891b2" />
           <meta
@@ -68,7 +71,7 @@ function App({ Component, pageProps }: Props) {
           <meta property="og:title" content="Rick and Morty" />
           <meta
             property="og:description"
-            content="Funny Rick and Morty application"
+            content="Characters, episodes, locations, quotes and a memorize game of Rick and Morty"
           />
           <meta
             property="og:image"
@@ -85,7 +88,7 @@ function App({ Component, pageProps }: Props) {
           />
           <meta
             property="twitter:description"
-            content="Funny Rick and Morty application"
+            content="Characters, episodes, locations, quotes and a memorize game of Rick and Morty"
           />
           <meta
             property="twitter:image"
