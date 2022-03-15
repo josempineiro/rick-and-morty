@@ -45,7 +45,7 @@ const CharacterDetails = ({ character }: CharacterProps) => {
           <article>
             {/* Profile header */}
             <div>
-              <div>
+              <div className="blur-2xl">
                 <img
                   className="h-32 w-full object-cover lg:h-48"
                   src={character.image}

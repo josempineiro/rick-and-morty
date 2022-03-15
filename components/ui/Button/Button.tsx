@@ -11,6 +11,7 @@ export interface ButtonProps
   rounded?: boolean;
   size?: "tiny" | "small" | "medium" | "large" | "huge";
   variant?: "primary" | "secondary" | "clear" | "danger" | "tertiary";
+  text?: React.ReactNode;
   children?: React.ReactNode;
   icon?: React.ReactElement<any, string | React.JSXElementConstructor<any>>;
   leftIcon?: React.ReactElement<any, string | React.JSXElementConstructor<any>>;
@@ -24,6 +25,7 @@ function Button({
   className,
   size,
   variant,
+  text,
   icon,
   leftIcon,
   rightIcon,
@@ -49,7 +51,7 @@ function Button({
     >
       {leftIcon && React.cloneElement(leftIcon, { className: styles.leftIcon })}
       {icon && React.cloneElement(icon, { className: styles.icon })}
-      {children}
+      {children || text}
       {rightIcon &&
         React.cloneElement(rightIcon, { className: styles.rightIcon })}
     </button>

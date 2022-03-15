@@ -4,6 +4,7 @@ import { ApolloProvider } from "@apollo/client";
 import Head from "next/head";
 import { AppProps } from "next/app";
 import Layout from "components/ui/Layout";
+import Notifier from "components/ui/Notifier";
 import Signature from "components/ui/Signature";
 import client from "apollo/client";
 import "styles/globals.css";
@@ -51,6 +52,10 @@ function App({ Component, pageProps }: Props) {
         </Head>
         <Component {...pageProps} />
         <Signature />
+        <div id="headlessui-portal-root">
+          <div />
+        </div>
+        <Notifier />
       </AppLayout>
     </ApolloProvider>
   );

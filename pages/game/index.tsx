@@ -6,6 +6,7 @@ import Dialog from "components/ui/overlays/Dialog";
 import MemorizeGame from "components/game/MemorizeGame";
 import LevelSelector from "components/game/LevelSelector";
 import Confetti from "components/ui/Confetti";
+import Notifier from "components/ui/Notifier";
 
 import Button from "components/ui/Button";
 import {
@@ -30,6 +31,29 @@ const randomIds = (total) => {
   return ids;
 };
 
+function getRandomWinAudios() {
+  const seed = Math.floor(Math.random() * 3) + 1;
+  switch (seed) {
+    case 1:
+      return "/audio/woo_vu_luvub_dub_dub.wav";
+    case 2:
+      return "/audio/you-win.mp3";
+    case 3:
+      return "/audio/this-must-be-the-best-day-of-your-life.mp3";
+  }
+}
+function getRandomAbortAudios() {
+  const seed = Math.floor(Math.random() * 3) + 1;
+  switch (seed) {
+    case 1:
+      return "/audio/seriously-holy-crap.mp3";
+    case 2:
+      return "/audio/dont-be-a-baby.mp3";
+    case 3:
+      return "/audio/you-little-turd.mp3";
+  }
+}
+
 const MemorizeGamePage = (props: Props) => {
   const router = useRouter();
   const [ids, setIds] = useState(randomIds(48));
@@ -45,6 +69,12 @@ const MemorizeGamePage = (props: Props) => {
   });
 
   function handleExitGame() {
+    Notifier.notify({
+      id: "GameFinished",
+      title: "See you soon!",
+      type: "info",
+      audio: "/audio/bye.mp3",
+    });
     router.push({ pathname: "/" }, undefined, { shallow: true });
   }
 
@@ -61,19 +91,28 @@ const MemorizeGamePage = (props: Props) => {
   const youWinAudio = useRef<HTMLAudioElement>();
 
   function handleFinishGame(game) {
-    if (Math.random() > 0.5) {
-      wooVuAudio.current.play();
-    } else {
-      youWinAudio.current.play();
-    }
-    debugger;
+    Notifier.notify({
+      id: "GameFinished",
+      title: "Congrats!",
+      message: "You win!",
+      type: "success",
+      audio: getRandomWinAudios(),
+    });
     setFinishedGame(game);
   }
   function handleAbortGame() {
+    Notifier.notify({
+      id: "GameFinished",
+      title: "Congrats!",
+      message: "You win!",
+      type: "success",
+      audio: getRandomAbortAudios(),
+    });
     setFinishedGame(undefined);
     setLevel(undefined);
     setWantFinishGame(false);
   }
+
   function handleContinueGame() {
     setWantFinishGame(false);
     setFinishedGame(undefined);
