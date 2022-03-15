@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import * as React from "react";
+import React from "react";
 import styles from "./Button.module.css";
 
 export interface ButtonProps
@@ -21,25 +21,21 @@ export interface ButtonProps
   >;
 }
 
-const Button = (
-  {
-    className,
-    size = "medium",
-    variant = "primary",
-    text,
-    icon,
-    leftIcon,
-    rightIcon,
-    children,
-    rounded,
-    type = "button",
-    ...props
-  }: ButtonProps,
-  ref: React.RefObject<HTMLButtonElement>
-) => {
+const Button = ({
+  className,
+  size = "medium",
+  variant = "primary",
+  text,
+  icon,
+  leftIcon,
+  rightIcon,
+  children,
+  rounded,
+  type = "button",
+  ...props
+}: ButtonProps) => {
   return (
     <button
-      ref={ref}
       className={classNames(className, styles.button, {
         [styles[size]]: true,
         [styles[variant]]: true,
@@ -57,4 +53,4 @@ const Button = (
   );
 };
 
-export default React.forwardRef(Button);
+export default Button;
